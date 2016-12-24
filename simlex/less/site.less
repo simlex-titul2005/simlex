@@ -1,0 +1,35 @@
+﻿@import (reference) "colors.less";
+@import (reference) "sizes.less";
+@import (reference) "../bower_components/bootstrap/less/variables.less";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:@color-white;
+}
+
+a:focus{
+    outline:none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-size: 100%;
+}
+
+//page-wrapper
+.page-wrapper{
+    padding-left:@nav-bar-width;
+    @media (max-width: @screen-xs-max) {
+        padding-left:0;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        padding-left:0;
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    }
+
+    @media (min-width: @screen-lg-min) {
+    }
+}

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+    var lang = SiteSettingsProvider["lang"]?.Value ?? "ru";
+}
+
+<!DOCTYPE html>
+<html>
+<head lang="@lang">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="@Url.Action("Css", "StaticContent", new { name="bootstrap"})" rel="stylesheet" />
+    <link href="@Url.Action("Css", "StaticContent", new { name="font-awesome"})" rel="stylesheet" />
+    <link href="~/content/dist/css/site.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page-wrapper">
+        @Html.Partial("_NavBar")
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
