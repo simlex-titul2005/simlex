@@ -25,7 +25,8 @@ namespace simlex
         {
             DefaultControllerNamespaces = new string[] { "simlex.Controllers" },
             MapperConfigurationExpression = AutoMapperConfig.Register,
-            PreRouteAction=RouteConfig.PreRouteAction
+            PreRouteAction = RouteConfig.PreRouteAction,
+            PostRouteAction = RouteConfig.PostRouteAction
         };
 
         protected override void Application_Start(object sender, EventArgs e)

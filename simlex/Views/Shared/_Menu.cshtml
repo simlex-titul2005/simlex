@@ -3,7 +3,7 @@
 }
 <div class="l-b menu">
     <ul>
-        <li @(controller == "articles" ? "class=active" : null)><a href="@Url.Action("Index", "Home")">Главная</a></li>
+        <li @(controller == "articles" ? "class=active" : null)><a href="@Url.Action("List", "Articles")">Главная</a></li>
         <li><a href="#">Обо мне</a></li>
         <li><a href="#">Контакты</a></li>
         @if (User.IsInRole("admin"))

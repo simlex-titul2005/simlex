@@ -130,6 +130,7 @@
     <Compile Include="Areas\Admin\Controllers\GraphicsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MaterialCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MaterialTagsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuItemsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
@@ -179,6 +180,8 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Views\MaterialCategories\_TreeViewMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\EditorTemplates\VMArticle.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Articles\DisplayTemplates\VMArticle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

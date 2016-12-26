@@ -2,5 +2,5 @@
 
 @Html.SxTree(Model, new SxExtantions.SxTreeSettings<SX.WebCore.ViewModels.SxVMMaterialCategory>() {
     FuncChildren=null,
-    FuncContent=x=>$"<a href=\"{Url.Action("Index", "Articles", new { category=x.Id })}\">{x.Title}</a>"
+    FuncContent=x=>$"<a href=\"{Url.Action("List", "Articles", new { category=x.Id })}\">{x.Title}</a>"
 })

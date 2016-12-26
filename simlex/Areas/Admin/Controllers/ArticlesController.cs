@@ -14,7 +14,7 @@ namespace simlex.Areas.Admin.Controllers
         public ArticlesController() : base((byte)Enums.ModelCoreType.Article) { }
 
         private static RepoArticle _repo = new RepoArticle();
-        public override RepoMaterial<Article, VMArticle> Repo
+        public override SxRepoMaterial<Article, VMArticle> Repo
         {
             get
             {

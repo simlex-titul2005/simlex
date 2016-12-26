@@ -1,0 +1,53 @@
+﻿@model simlex.ViewModels.VMArticle
+@{
+    var mode = ViewData["Mode"]?.ToString();
+}
+
+<div class="material">
+    <h2 class="material__title">
+        <a href="@Model.GetUrl(Url)">@Model.Title</a>
+    </h2>
+    <div class="material__author">
+        Автор: <a href="@Url.Action("List", "Articles", new { author=Model.User.NikName })">@Model.User.NikName</a> &nbsp; категория <a href="@Url.Action("List", "Articles", new { category=Model.Category.Id })">@Model.Category.Title</a>
+    </div>
+    <div class="material__delimiter">
+        <span class="material__delimiter-line"></span>
+        <span class="fa fa-file-text-o"></span>
+    </div>
+    <div class="material__info">
+        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp; <i class="fa fa-comment-o"></i> <span>@Model.CommentsCount</span>
+    </div>
+    <div class="material__img">
+        <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id=Model.FrontPictureId })" />
+    </div>
+    @if (mode == "small")
+    {
+        <div class="material__fwd">
+            @Html.Raw(Model.Foreword ?? Model.GetForewordFromHtml(300))
+        </div>
+    }
+    else
+    {
+        <div class="material__html">
+            @Html.Raw(Model.Html)
+        </div>
+    }
+
+    @if (mode == "small")
+    {
+        <div class="material__btn">
+            <a href="@Model.GetUrl(Url)" class="btn btn-black">Подробнее</a>
+        </div>
+    }
+    else
+    {
+        <div class="material__tags">
+            <span class="material__tags-title">Теги</span>
+            @for (int i = 0; i < Model.MaterialTags.Length; i++)
+            {
+                var tag = Model.MaterialTags[i];
+                <a href="@Url.Action("List", "Articles", new { tag=tag.Id })" rel="tag" class="btn btn-accent">@tag.Title</a>
+            }
+        </div>
+    }
+</div>
