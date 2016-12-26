@@ -1,18 +1,28 @@
 ﻿@import (reference) "colors.less";
 @import (reference) "sizes.less";
+@import (reference) "transitions.less";
 @import (reference) "../bower_components/bootstrap/less/variables.less";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&subset=cyrillic');
 
-html, body, .page-wrapper{
-    height:100%;
+html, body, .page-wrapper {
+    height: 100%;
 }
+
+@footer-height: 100px;
 
 body {
     font-family: Arial, sans-serif;
-    background-color:@color-white;
+    background-color: @color-white;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: @footer-height;
 }
 
-a:focus{
-    outline:none;
+a {
+    color: inherit;
+}
+
+a:focus {
+    outline: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,21 +30,277 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 //page-wrapper
-.page-wrapper{
+.page-wrapper {
+    max-width: @screen-lg-min;
+
     @media (max-width: @screen-xs-max) {
-        
     }
 
     @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-        
+        margin-left: @nav-bar-width;
     }
 
     @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-        margin-left:@nav-bar-width;
+        margin-left: @nav-bar-width;
     }
 
     @media (min-width: @screen-lg-min) {
-        margin-left:@nav-bar-width;
+        margin-left: @nav-bar-width;
     }
+}
+
+.page {
+    display: table;
+    background-color: @color-white;
+
+    @media (max-width: @screen-xs-max) {
+        display: block;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        display: block;
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    }
+
+    @media (min-width: @screen-lg-min) {
+    }
+}
+
+.page > div[class^="page-col"] {
+    vertical-align: top;
+    padding: @def-pad*2;
+
+    @media (max-width: @screen-xs-max) {
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    }
+
+    @media (min-width: @screen-lg-min) {
+        display: table-cell;
+    }
+}
+
+.page > .page-col-2 {
+    width: 250px !important;
+
+    @media (max-width: @screen-xs-max) {
+        position: absolute;
+        left: 0;
+        display: none;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        position: absolute;
+        top: 0;
+        left: @nav-bar-width;
+        display: none;
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        position: absolute;
+        top: 0;
+        left: @nav-bar-width;
+        display: none;
+    }
+
+    @media (min-width: @screen-lg-min) {
+        display: table-cell;
+    }
+}
+
+.page > .page-col-2.visible {
+    border-right: 1px solid @gray-lighter;
+    height: 100%;
+}
+
+.page > .page-col-7 {
+    width: 600px;
+
+    @media (max-width: @screen-xs-max) {
+        display: block;
+        width: 100%;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        display: table-cell;
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        display: table-cell;
+    }
+
+    @media (min-width: @screen-lg-min) {
+        display: table-cell;
+    }
+}
+
+.page > .page-col-3 {
+    width: 350px;
+
+    @media (max-width: @screen-xs-max) {
+        display: block;
+        width: 100%;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        display: table-cell;
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        display: table-cell;
+    }
+
+    @media (min-width: @screen-lg-min) {
+        display: table-cell;
+    }
+}
+
+.l-b {
+    padding: @def-pad*2 0;
+    border-bottom: 1px solid @gray-lighter;
+}
+
+.l-b:last-child {
+    border-bottom: none;
+}
+
+.l-b li.active a {
+    color: @color-accent;
+}
+
+.l-b a {
+    .transition;
+}
+
+.l-b a:hover {
+    color: @color-accent;
+}
+
+//about-me
+@about-me-img-size: 120px;
+
+.about-me .about-me-img {
+    width: @about-me-img-size;
+    height: @about-me-img-size;
+    border-radius: 100%;
+    background-image: url('/content/dist/i/static/logo.png');
+    margin-bottom: @def-pad;
+    background-position: center center;
+    background-size: cover;
+}
+
+.about-me .about-me-title {
+    color: @color-gray;
+    font-size: 15px;
+    margin-bottom: @def-pad;
+    font-weight: 500;
+}
+
+.about-me .about-me-text {
+    font-size: 12px;
+    color: @color-gray-light;
+}
+
+//menu
+.menu ul {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.menu ul li {
+    margin-bottom: @def-pad - 5px;
+}
+
+//categoties
+.categoties {
+    font-size: 12px;
+}
+
+.categoties-title {
+    text-transform: uppercase;
+    margin-bottom: @def-pad;
+    font-weight: 500;
+}
+
+.categoties li {
+    margin-bottom: 5px;
+}
+
+//meta
+.meta {
+    font-size: 12px;
+}
+
+.meta-title {
+    text-transform: uppercase;
+    margin-bottom: @def-pad;
+    font-weight: 500;
+}
+
+.meta li {
+    margin-bottom: 5px;
+}
+
+//.nav-tabs > li > a
+.mat-stat{
+    font-size:12px;
+}
+.mat-stat .nav-tabs {
+    border-bottom: none;
+}
+
+.mat-stat .nav-tabs > li > a {
+    background-color: @gray-lighter;
+    text-transform: uppercase;
+    .transition;
+    border-radius: 3px;
+    border: none;
+    padding: 7px 10px;
+    margin-right:@def-pad;
+}
+
+.mat-stat .nav-tabs > li > a:hover, .mat-stat .nav-tabs > li.active > a {
+    background-color: @color-accent;
+    color: @color-white;
+    border: none;
+}
+
+.mat-stat .nav-tabs > li.active > a::after {
+    content: "";
+    border-left: 6px dashed transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid @color-accent;
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    bottom: -6px;
+}
+
+.mat-stat .tab-content{
+    padding-top:@def-pad;
+}
+
+.mat-stat .tab-content a{
+    .transition;
+}
+
+.mat-stat .tab-content li{
+    margin-bottom:10px;
+}
+
+.mat-stat .tab-content a:hover{
+    color:@color-accent;
 }

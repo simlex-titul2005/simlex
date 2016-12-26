@@ -1,0 +1,45 @@
+﻿@model simlex.ViewModels.MaterialsStatisticBlock
+
+<div class="mat-stat">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#posts" aria-controls="posts" role="tab" data-toggle="tab">Статьи</a></li>
+        <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Комментарии</a></li>
+        <li role="presentation"><a href="#tags" aria-controls="tags" role="tab" data-toggle="tab">Теги</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="posts">
+            <ul>
+                @for (int i = 0; i < Model.Materials.Length; i++)
+                {
+                    var material = Model.Materials[i];
+                    <li>
+                        <a href="@material.GetUrl(Url)">@material.Title</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="comments">
+            <ul>
+                <li>
+                    <a href="#">The Inside Secrets Of Millionaires Under The Age Of 29</a>
+                </li>
+                <li>
+                    <a href="#">Responsive WordPress Themes</a>
+                </li>
+                <li>
+                    <a href="#">Finally! An Acne Cream That Actually Does What It Says</a>
+                </li>
+                <li>
+                    <a href="#">Unlock The Secrets Of Selling High Ticket</a>
+                </li>
+                <li>
+                    <a href="#">Take Advantage Of The Stock Market</a>
+                </li>
+            </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tags">tags</div>
+    </div>
+
+</div>

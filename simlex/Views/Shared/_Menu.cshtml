@@ -1,0 +1,14 @@
+﻿@{
+    var controller = ViewController;
+}
+<div class="l-b menu">
+    <ul>
+        <li @(controller == "articles" ? "class=active" : null)><a href="@Url.Action("Index", "Home")">Главная</a></li>
+        <li><a href="#">Обо мне</a></li>
+        <li><a href="#">Контакты</a></li>
+        @if (User.IsInRole("admin"))
+        {
+            <li><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Управление</a></li>
+        }
+    </ul>
+</div>

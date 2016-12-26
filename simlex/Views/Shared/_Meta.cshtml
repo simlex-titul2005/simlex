@@ -1,0 +1,11 @@
+﻿@{ 
+    var controller = ViewController;
+}
+<div class="l-b meta">
+    <h4 class="meta-title">Ссылки</h4>
+    <ul>
+        <li @(controller=="account" ? "class=active":null)><a href="@Url.Action("Login", "Account")">Log in</a></li>
+        <li><a href="#">Comments RSS</a></li>
+        <li><a href="#">Entries RSS</a></li>
+    </ul>
+</div>

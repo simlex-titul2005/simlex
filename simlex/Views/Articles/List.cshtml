@@ -1,0 +1,6 @@
+﻿@model SxExtantions.SxPagedCollection<simlex.ViewModels.VMArticle>
+
+@for (int i = 0; i < Model.Collection.Length; i++)
+{
+    @Html.DisplayFor(x=>Model.Collection[i])
+}

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "target": "es5",
+    "outFile": "../../navbar.js"
+  },
+  "files": [
+    "navbar.ts"
+  ],
+  "compileOnSave": true
+}

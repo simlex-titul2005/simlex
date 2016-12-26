@@ -17,9 +17,31 @@
 <body>
     <div class="page-wrapper">
         @Html.Partial("_NavBar")
-        <div class="container">
-            @RenderBody()
+        <div class="page">
+            <div class="page-col-2">
+                @Html.Partial("_AboutMe")
+                @Html.Partial("_Menu")
+                @Html.Partial("_Categories")
+                @Html.Partial("_Meta")
+            </div>
+            <div class="page-col-7">
+                @RenderBody()
+            </div>
+            <div class="page-col-3">
+                @Html.Action("Statistic", "Home")
+            </div>
         </div>
     </div>
+    <script src="@Url.Action("Js", "StaticContent", new { name="jquery"})"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="bootstrap"})"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="jquery.validate"})"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="jquery.validate.unobtrusive"})"></script>
+    <script src="~/content/dist/js/site.min.js"></script>
+    <script>
+        $(function () {
+            var navbar = new Navbar();
+            navbar.initialize('.nav-bar');
+        });
+    </script>
 </body>
 </html>

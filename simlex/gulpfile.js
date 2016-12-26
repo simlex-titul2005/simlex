@@ -45,7 +45,7 @@ function createCss() {
 
 function createJs() {
     gulp.src([
-        'scripts/site.js'
+        'scripts/navbar.js'
     ])
         .pipe(uglify())
         .pipe(concat('site.min.js'))

@@ -5,12 +5,14 @@ namespace simlex
 {
     public class MvcApplication : SX.WebCore.MvcApplication.SxMvcApplication
     {
-        private static readonly Dictionary<string, byte> _customModelCoreTypes = new Dictionary<string, byte>() {
+        private static readonly Dictionary<string, byte> _customModelCoreTypes = new Dictionary<string, byte>()
+        {
 
         };
 
 
-        private static string _getModelCoreTypeNames(byte mct) {
+        private static string _getModelCoreTypeNames(byte mct)
+        {
             return mct.ToString();
         }
 
@@ -19,7 +21,12 @@ namespace simlex
                 getDbContextInstance: () => new Infrastructure.DbContext(),
                 customModelCoreTypes: _customModelCoreTypes,
                 getModelCoreTypeName: _getModelCoreTypeNames
-            );
+            )
+        {
+            DefaultControllerNamespaces = new string[] { "simlex.Controllers" },
+            MapperConfigurationExpression = AutoMapperConfig.Register,
+            PreRouteAction=RouteConfig.PreRouteAction
+        };
 
         protected override void Application_Start(object sender, EventArgs e)
         {
