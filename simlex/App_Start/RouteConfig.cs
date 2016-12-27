@@ -9,7 +9,7 @@ namespace simlex
         private static readonly string[] _defNamespases = new string[] { "simlex.Controllers" };
         public static Action<RouteCollection> PreRouteAction = routes =>
         {
-            routes.MapRoute( name: null, url: "admin", defaults: new { controller = "Home", action = "Index", area="Admin" }, namespaces: _defNamespases);
+            
         };
 
         public static Action<RouteCollection> PostRouteAction = routes =>

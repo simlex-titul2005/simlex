@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\dist\css\site.min.css" />
+    <Content Include="content\dist\i\static\incognito.jpg" />
     <Content Include="content\dist\i\static\logo.png" />
     <Content Include="content\dist\js\site.min.js" />
     <Content Include="Global.asax" />
@@ -135,11 +136,11 @@
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\Abstract\BaseController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Abstract\MaterialsController.cs" />
     <Compile Include="Controllers\MaterialCategoriesController.cs" />
     <Compile Include="Controllers\MaterialTagsController.cs" />
@@ -176,12 +177,16 @@
     <Content Include="Views\Shared\_Categories.cshtml" />
     <Content Include="Views\Shared\_Meta.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Home\_Statistic.cshtml" />
+    <Content Include="Views\Articles\_Statistic.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Views\MaterialCategories\_TreeViewMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\EditorTemplates\VMArticle.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\DisplayTemplates\VMArticle.cshtml" />
+    <Content Include="Views\Articles\_Related.cshtml" />
+    <Content Include="Views\Comments\_List.cshtml" />
+    <Content Include="Views\Comments\_NewComment.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SxVMComment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

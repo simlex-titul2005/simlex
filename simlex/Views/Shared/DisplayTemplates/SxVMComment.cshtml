@@ -1,0 +1,19 @@
+﻿@model SX.WebCore.ViewModels.SxVMComment
+
+<div class="comment">
+    <div class="comment__user">
+        <img alt="sx-comment-@Model.Id" src="@(Model.User?.AvatarId!=null ? Url.Action("Picture", "Pictures", new { id=Model.User.AvatarId}) : "/content/dist/i/static/incognito.jpg")" />
+    </div>
+    <div class="comment__content">
+        <div class="comment__author-name">@(Model.User?.NikName ?? Model.UserName)</div>
+        <div class="comment__date">
+            <a href="#sx-comment-@Model.Id"><i class="fa fa-clock-o"></i> @Model.DateCreate.ToString("MMMM dd, yyyy") в @Model.DateCreate.ToString("hh : mm")</a>
+        </div>
+        <p class="comment__text">
+            @Model.Html
+        </p>
+        <div class="comment__reply">
+            <a href="#"><i class="fa fa-reply" aria-hidden="true"></i> Ответить</a>
+        </div>
+    </div>
+</div>

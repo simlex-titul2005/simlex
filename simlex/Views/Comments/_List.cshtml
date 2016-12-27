@@ -1,0 +1,15 @@
+﻿@model SX.WebCore.ViewModels.SxVMComment[]
+
+@{
+    var mid = (int)ViewData["MaterialId"];
+    var mct = (byte)ViewData["ModelCoreType"];
+    var comment = new SX.WebCore.ViewModels.SxVMComment() { MaterialId = mid, ModelCoreType = mct };
+}
+
+<div class="mat-comments">
+    @if (Model.Length > 0)
+    {
+        <h4 class="mat-comments__header">Комментарии @Model.Length</h4>
+    }
+    @Html.SxCommentsFor("~/Views/Comments/_NewComment.cshtml", mid, mct, Model)
+</div>

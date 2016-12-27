@@ -1,0 +1,39 @@
+﻿@model SX.WebCore.ViewModels.SxVMComment
+
+<div class="sx-new-comment">
+    <h4 class="mat-comments__header">Оставить комментарий</h4>
+    <form method="post" action="@Url.Action("Edit", "Comments")" class="mat-comments__new-form" autocomplete="off">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.MaterialId)
+        @Html.HiddenFor(x => x.ModelCoreType)
+
+        <div class="form-group">
+            <label for="@Html.IdFor(x=>x.Html)" class="control-label">Комментарий</label>
+            @Html.EditorFor(x => x.Html, new { htmlAttributes = new { @class = "form-control", @style = "min-height:250px;" } })
+        </div>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="form-group">
+                <label for="@Html.IdFor(x => x.UserName)" class="control-label">Имя</label>
+                @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                <label for="@Html.IdFor(x => x.Email)" class="control-label">Email</label>
+                @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        }
+        else
+        {
+            <input type="hidden" name="@Html.NameFor(x=>x.Email)" value="@User.Identity.Name" />
+        }
+
+        <div class="form-group">
+            <div class="text-right">
+                <a href="#" class="sx-comments__cancel-reply btn btn-black pull-left">Отмена</a>
+                <button type="submit" class="btn btn-accent">Отправить</button>
+            </div>
+        </div>
+    </form>
+</div>

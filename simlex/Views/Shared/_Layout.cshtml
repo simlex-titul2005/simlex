@@ -28,7 +28,7 @@
                 @RenderBody()
             </div>
             <div class="page-col-3">
-                @Html.Action("Statistic", "Home")
+                @Html.Action("Statistic", "Articles")
             </div>
         </div>
     </div>
@@ -43,5 +43,6 @@
             navbar.initialize('.nav-bar');
         });
     </script>
+    @RenderSection("scripts", false)
 </body>
 </html>

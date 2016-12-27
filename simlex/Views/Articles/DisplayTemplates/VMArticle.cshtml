@@ -2,11 +2,17 @@
 @{
     var mode = ViewData["Mode"]?.ToString();
 }
-
 <div class="material">
-    <h2 class="material__title">
-        <a href="@Model.GetUrl(Url)">@Model.Title</a>
-    </h2>
+    @if (mode == "small")
+    {
+        <h2 class="material__title">
+            <a href="@Model.GetUrl(Url)">@Model.Title</a>
+        </h2>
+    }
+    else
+    {
+        <h1 class="material__title">@Model.Title</h1>
+    }
     <div class="material__author">
         Автор: <a href="@Url.Action("List", "Articles", new { author=Model.User.NikName })">@Model.User.NikName</a> &nbsp; категория <a href="@Url.Action("List", "Articles", new { category=Model.Category.Id })">@Model.Category.Title</a>
     </div>
@@ -32,7 +38,6 @@
             @Html.Raw(Model.Html)
         </div>
     }
-
     @if (mode == "small")
     {
         <div class="material__btn">
@@ -46,7 +51,7 @@
             @for (int i = 0; i < Model.MaterialTags.Length; i++)
             {
                 var tag = Model.MaterialTags[i];
-                <a href="@Url.Action("List", "Articles", new { tag=tag.Id })" rel="tag" class="btn btn-accent">@tag.Title</a>
+                <a href="@Url.Action("List", "Articles", new { tag=tag.Id })" rel="tag" class="btn btn-accent inverse">@tag.Title</a>
             }
         </div>
     }

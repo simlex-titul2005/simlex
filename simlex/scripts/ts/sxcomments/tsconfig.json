@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "target": "es5",
+    "outFile": "../../sxcomments.js"
+  },
+  "files": [
+    "sxcomments.ts"
+  ],
+  "compileOnSave": true
+}

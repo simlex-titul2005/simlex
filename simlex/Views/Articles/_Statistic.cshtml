@@ -10,36 +10,31 @@
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="posts">
-            <ul>
+            <ul class="mat-stat__materials">
                 @for (int i = 0; i < Model.Materials.Length; i++)
                 {
                     var material = Model.Materials[i];
                     <li>
-                        <a href="@material.GetUrl(Url)">@material.Title</a>
+                        <i class="fa fa-file-text-o"></i> <a href="@material.GetUrl(Url)">@material.Title</a>
                     </li>
                 }
             </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="comments">
-            <ul>
-                <li>
-                    <a href="#">The Inside Secrets Of Millionaires Under The Age Of 29</a>
-                </li>
-                <li>
-                    <a href="#">Responsive WordPress Themes</a>
-                </li>
-                <li>
-                    <a href="#">Finally! An Acne Cream That Actually Does What It Says</a>
-                </li>
-                <li>
-                    <a href="#">Unlock The Secrets Of Selling High Ticket</a>
-                </li>
-                <li>
-                    <a href="#">Take Advantage Of The Stock Market</a>
-                </li>
+            <ul class="mat-stat__comments">
+                @for (int i = 0; i < Model.CommentedMaterials.Length; i++)
+                {
+                    var commentedMaterial = Model.CommentedMaterials[i];
+
+                    <li>
+                        <i class="fa fa-comment-o"></i> <span class="mat-stat__comment-author">@(commentedMaterial.LastComment.User?.NikName ?? commentedMaterial.LastComment?.UserName)</span> <a href="@($"{commentedMaterial.GetUrl(Url)}#sx-comment-{commentedMaterial.LastComment.Id}")">@commentedMaterial.Title</a>
+                    </li>
+                }
             </ul>
         </div>
-        <div role="tabpanel" class="tab-pane" id="tags">tags</div>
+        <div role="tabpanel" class="tab-pane" id="tags">
+            @Html.SxTagsCloud(Model.Tags, x => Url.Action("List", "Articles", new { tag = x.Id }), 14, false)
+        </div>
     </div>
 
 </div>

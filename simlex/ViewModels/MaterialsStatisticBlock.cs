@@ -6,12 +6,12 @@ namespace simlex.ViewModels
     {
         public MaterialsStatisticBlock()
         {
-            Comments = new SxVMComment[0];
+            CommentedMaterials = new VMMaterial[0];
             Materials = new VMMaterial[0];
             Tags = new SxVMMaterialTag[0];
         }
 
-        public SxVMComment[] Comments { get; set; }
+        public VMMaterial[] CommentedMaterials { get; set; }
         public VMMaterial[] Materials { get; set; }
         public SxVMMaterialTag[] Tags { get; set; }
     }

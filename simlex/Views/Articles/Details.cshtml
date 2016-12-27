@@ -1,3 +1,17 @@
 ﻿@model simlex.ViewModels.VMArticle
-
 @Html.DisplayForModel()
+@Html.Partial("_Related", Model)
+
+<div id="comments-block">
+    @Html.Partial("~/Views/Comments/_List.cshtml", Model.Comments, new ViewDataDictionary { { "MaterialId", Model.Id }, { "ModelCoreType", Model.ModelCoreType } })
+</div>
+
+@section scripts{
+    <script src="~/scripts/sxcomments.js"></script>
+    <script>
+        $(function () {
+            var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block');
+            comments.initialize();
+        });
+    </script>
+}
