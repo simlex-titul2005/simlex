@@ -1,0 +1,27 @@
+﻿@model SX.WebCore.ViewModels.SxVMSiteNet[]
+@if (Model.Any())
+{
+    SX.WebCore.ViewModels.SxVMSiteNet item;
+    <aside class="accordion">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            @for (int i = 0; i < Model.Length; i++)
+            {
+                item = Model[i];
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="site-net-heading-@item.NetId">
+                        <h4 class="panel-title">
+                            <a class="@(i==0?null:"collapsed")" role="button" data-toggle="collapse" data-parent="#accordion" href="#site-net-@item.NetId" aria-expanded="true" aria-controls="site-net-@item.NetId">
+                                @item.Net.Name
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="site-net-@item.NetId" class="panel-collapse collapse @(i==0?"in":null)" role="tabpanel" aria-labelledby="site-net-heading-@item.NetId">
+                        <div class="panel-body">
+                            Proin non sodales leo, vel ullamcorper ante. Etiam gravida sem ac dui aliquam, ut rhoncus neque fermentum. Ut sagittis posuere dolor, vitae adipiscing velit imperdiet posuere. Nullam a purus ut lorem sollicitudin pharetra. Proin aliquet dignissim placerat. Proin lacinia nisi egestas molestie semp
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </aside>
+}

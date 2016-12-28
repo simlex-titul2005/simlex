@@ -1,5 +1,40 @@
-﻿@model SX.WebCore.ViewModels.SxVMAppUser
-
+﻿@model SX.WebCore.ViewModels.SxVMUserInfo
+@{
+    var phone = Model.User.Contacts?.FirstOrDefault(x => x.ContactType == SX.WebCore.DbModels.SxUserContact.UserContactType.Phone);
+    var site = Model.User.Contacts?.FirstOrDefault(x => x.ContactType == SX.WebCore.DbModels.SxUserContact.UserContactType.Site);
+}
 <div class="user-about">
-    <h1 class="user-about__header">@Model.NikName</h1>
+    <h1 class="user-about__header header">@Model.User.NikName</h1>
+    <p class="user-about__about">
+        @Model.About
+    </p>
+    <div class="user-about__info">
+        <div class="user-about__info--item">
+            <ul>
+                <li>
+                    Дата рождения
+                    <span class="pull-right">@(Model.DateOfBirth.HasValue ? ((DateTime)Model.DateOfBirth).ToString("dd MMMM, yyyy") : null)</span>
+                </li>
+                <li>
+                    Пол
+                    <span class="pull-right">@Model.Gender</span>
+                </li>
+                <li>
+                    Страна
+                    <span class="pull-right">@Model.Country</span>
+                </li>
+                <li>
+                    Телефон
+                    <span class="pull-right">@(phone?.Value)</span>
+                </li>
+                <li>
+                    Вёбсайт
+                    <span class="pull-right">@(site?.Value != null ? Html.Raw($"<a href=\"{site.Value}\">{site.Value}</a>") : null)</span>
+                </li>
+            </ul>
+        </div>
+        <div class="user-about__info--item">
+            <div class="user-about__photo"></div>
+        </div>
+    </div>
 </div>

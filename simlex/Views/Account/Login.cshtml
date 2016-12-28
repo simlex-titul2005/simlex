@@ -3,9 +3,9 @@
     ViewBag.Title = "Вход";
 }
 
-<h1>@(ViewBag.H1 ?? ViewBag.Title)</h1>
+<h1 class="header">@(ViewBag.H1 ?? ViewBag.Title)</h1>
 
-<form method="post" action="@Url.Action("Login", "Account")">
+<form method="post" action="@Url.Action("Login", "Account")" class="form-account">
     @Html.AntiForgeryToken()
 
     <div class="form-group">
@@ -19,6 +19,6 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-default">Войти</button>
+        <button type="submit" class="btn btn-accent">Войти</button>
     </div>
 </form>

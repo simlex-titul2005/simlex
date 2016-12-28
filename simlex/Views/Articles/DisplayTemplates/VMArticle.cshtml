@@ -21,7 +21,7 @@
         <span class="fa fa-file-text-o"></span>
     </div>
     <div class="material__info">
-        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp; <i class="fa fa-comment-o"></i> <span>@Model.CommentsCount</span>
+        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp; <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
     </div>
     <div class="material__img">
         <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id=Model.FrontPictureId })" />

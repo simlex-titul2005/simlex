@@ -115,6 +115,8 @@
     <Content Include="content\dist\css\site.min.css" />
     <Content Include="content\dist\i\static\incognito.jpg" />
     <Content Include="content\dist\i\static\logo.png" />
+    <Content Include="content\dist\i\static\photo.png" />
+    <Content Include="content\dist\i\temp\addsens.jpg" />
     <Content Include="content\dist\js\site.min.js" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -144,6 +146,7 @@
     <Compile Include="Controllers\Abstract\MaterialsController.cs" />
     <Compile Include="Controllers\MaterialCategoriesController.cs" />
     <Compile Include="Controllers\MaterialTagsController.cs" />
+    <Compile Include="Controllers\SiteNetsController.cs" />
     <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +192,7 @@
     <Content Include="Views\Comments\_NewComment.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SxVMComment.cshtml" />
     <Content Include="Views\Users\About.cshtml" />
+    <Content Include="Views\SiteNets\_Accordion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

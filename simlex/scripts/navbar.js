@@ -12,6 +12,7 @@ var Navbar = (function () {
         $(".nav-bar-item").clone().removeAttr("class").appendTo(this._navbarTemp);
         this._navbarTemp.appendTo(this._navbar);
         this._navbar.find(".nav-bar--menu-btn a").on("click", function (e) {
+            _this._page.toggleClass("opened");
             var w = 250;
             var visible = _this._about.hasClass("visible");
             if (!visible) {
@@ -47,6 +48,9 @@ var Navbar = (function () {
             _this._navbarTemp.animate({
                 "top": "-40px"
             }, "fast");
+        });
+        this._navbar.find("li").not(".nav-bar-item").on("click", function (e) {
+            e.preventDefault();
         });
     };
     return Navbar;

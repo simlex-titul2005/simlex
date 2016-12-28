@@ -18,6 +18,7 @@ class Navbar {
         this._navbarTemp.appendTo(this._navbar);
 
         this._navbar.find(".nav-bar--menu-btn a").on("click", (e: JQueryEventObject): void => {
+            this._page.toggleClass("opened");
             var w: number = 250;
             var visible: boolean = this._about.hasClass("visible");
             if (!visible) {
@@ -57,6 +58,10 @@ class Navbar {
             this._navbarTemp.animate({
                 "top": "-40px"
             }, "fast");
+        });
+
+        this._navbar.find("li").not(".nav-bar-item").on("click", (e: JQueryEventObject): void => {
+            e.preventDefault();
         });
     }
 }

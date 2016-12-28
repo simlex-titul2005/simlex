@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "target": "es5",
+    "outFile": "../../page.js"
+  },
+  "files": [
+    "page.ts"
+  ],
+  "compileOnSave": true
+}

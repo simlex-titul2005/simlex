@@ -29,6 +29,10 @@
             </div>
             <div class="page-col-3">
                 @Html.Action("Statistic", "Articles")
+                @Html.Action("Accordion", "SiteNets")
+                <div class="banner-right">
+                    <img src="/content/dist/i/temp/addsens.jpg" />
+                </div>
             </div>
         </div>
     </div>
@@ -39,6 +43,9 @@
     <script src="~/content/dist/js/site.min.js"></script>
     <script>
         $(function () {
+            var page = new Page();
+            page.initialize();
+
             var navbar = new Navbar();
             navbar.initialize('.nav-bar');
         });

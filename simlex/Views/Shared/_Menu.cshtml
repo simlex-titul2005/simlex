@@ -4,7 +4,7 @@
 <div class="l-b menu">
     <ul>
         <li @(controller == "articles" ? "class=active" : null)><a href="@Url.Action("List", "Articles")">Главная</a></li>
-        <li><a href="@Url.Action("About", "Users", new { nikname="simlex"})">Обо мне</a></li>
+        <li @(controller == "users" ? "class=active" : null)><a href="@Url.Action("About", "Users", new { nikname="simlex"})">Обо мне</a></li>
         <li><a href="#">Контакты</a></li>
         @if (User.IsInRole("admin"))
         {
