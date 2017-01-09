@@ -8,14 +8,8 @@
 html {
     position: relative;
     min-height: 100%;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: @color-white;
-    font-family: 'Roboto', sans-serif;
     @media (max-width: @screen-xs-max) {
-        padding-bottom:@nav-bar-width;
+        padding-top:@nav-bar-width;
     }
 
     @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
@@ -23,12 +17,16 @@ body {
     }
 
     @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-        
     }
 
     @media (min-width: @screen-lg-min) {
-        
     }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: @color-white;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -376,6 +374,16 @@ ul {
     margin-bottom: @def-pad;
     background-position: center center;
     background-size: cover;
+    position:relative;
+}
+
+.about-me .about-me-img > a{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    border-radius:100%;
 }
 
 .about-me .about-me-title {
@@ -399,6 +407,23 @@ ul {
 
 .menu ul li {
     margin-bottom: @def-pad - 5px;
+}
+
+.menu .get-site-btn{
+    margin-top:20px;
+}
+
+.menu .get-site-btn > a{
+    background-color:@color-accent-2;
+    color:@color-white;
+    text-decoration:none;
+    padding:10px;
+    border-radius:2px;
+    margin-left:-10px;
+}
+
+.menu .examples-site-btn{
+    margin-top:20px;
 }
 
 //categoties
@@ -471,7 +496,7 @@ ul {
     position: absolute;
     left: 50%;
     margin-left: -6px;
-    bottom: -6px;
+    bottom: -5px;
 }
 
 .mat-stat .tab-content a {
@@ -591,7 +616,7 @@ ul {
     margin-bottom: @def-pad*2;
 }
 
-.material__img > img {
+.material__img > img, .material__img > a > img {
     max-width: 100%;
     @media (max-width: @screen-xs-max) {
         width:100%;
@@ -606,6 +631,20 @@ ul {
 
     @media (min-width: @screen-lg-min) {
     }
+}
+
+.material__img > a{
+    position:relative;
+    display:block;
+}
+
+.material__img > a::after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
 }
 
 .material__fwd, .material__html {
@@ -719,6 +758,21 @@ ul {
 
 .mat-comments__new-form input[type=text], .mat-comments__new-form input[type=email] {
     width: 50%;
+    @media (max-width: @screen-xs-max) {
+        width:100%;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        
+    }
+
+    @media (min-width: @screen-lg-min) {
+        
+    }
 }
 
 .mat-comments .sx-comments {
@@ -917,7 +971,7 @@ ul {
     left: 0;
     @media (max-width: @screen-xs-max) {
         height:300px;
-        position:initial;
+        position:static;
     }
 
     @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {

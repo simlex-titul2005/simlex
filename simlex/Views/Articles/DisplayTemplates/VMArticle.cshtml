@@ -21,10 +21,27 @@
         <span class="fa fa-file-text-o"></span>
     </div>
     <div class="material__info">
-        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp; <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
+        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp;
+        @if (mode == "small")
+        {
+            <i class="fa fa-comment-o"></i> @:Комментариев: <span>@Model.CommentsCount</span>
+        }
+        else
+        {
+            <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
+        }
     </div>
     <div class="material__img">
-        <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id=Model.FrontPictureId })" />
+        @if (mode == "small")
+        {
+            <a href="@Model.GetUrl(Url)">
+                <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
+            </a>
+        }
+        else
+        {
+            <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
+        }
     </div>
     @if (mode == "small")
     {
@@ -46,13 +63,16 @@
     }
     else
     {
-        <div class="material__tags">
-            <span class="material__tags-title">Теги</span>
-            @for (int i = 0; i < Model.MaterialTags.Length; i++)
-            {
-                var tag = Model.MaterialTags[i];
-                <a href="@Url.Action("List", "Articles", new { tag=tag.Id })" rel="tag" class="btn btn-accent inverse">@tag.Title</a>
-            }
-        </div>
+        if (Model.MaterialTags.Any())
+        {
+            <div class="material__tags">
+                <span class="material__tags-title">Теги</span>
+                @for (int i = 0; i < Model.MaterialTags.Length; i++)
+                {
+                    var tag = Model.MaterialTags[i];
+                    <a href="@Url.Action("List", "Articles", new { tag = tag.Id })" rel="tag" class="btn btn-accent inverse">@tag.Title</a>
+                }
+            </div>
+        }
     }
 </div>

@@ -120,6 +120,7 @@
     <Content Include="content\dist\js\site.min.js" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="scripts\sxcomments.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Abstract\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BannedUrlsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\GraphicsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -137,12 +139,15 @@
     <Compile Include="Areas\Admin\Controllers\MaterialTagsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuItemsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RedirectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeoController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShareButtonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteNetsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ValutesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\Abstract\BaseController.cs" />
@@ -175,12 +180,7 @@
     <Content Include="Views\Articles\List.cshtml" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
-    <Content Include="less\site.less" />
-    <Content Include="less\colors.less" />
-    <Content Include="less\sizes.less" />
-    <Content Include="less\nav-bar.less" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="less\transitions.less" />
     <Content Include="Views\Shared\_AboutMe.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_Categories.cshtml" />
@@ -206,10 +206,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="scripts\" />
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\SX.WebCore\SX.WebCore\SX.WebCore.csproj">
       <Project>{daf1a092-ded8-4c43-b08d-20e55c6f03a2}</Project>

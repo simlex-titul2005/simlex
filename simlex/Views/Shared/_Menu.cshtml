@@ -6,9 +6,7 @@
         <li @(controller == "articles" ? "class=active" : null)><a href="@Url.Action("List", "Articles")">Главная</a></li>
         <li @(controller == "users" ? "class=active" : null)><a href="@Url.Action("About", "Users", new { nikname="simlex"})">Обо мне</a></li>
         <li><a href="#">Контакты</a></li>
-        @if (User.IsInRole("admin"))
-        {
-            <li><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Управление</a></li>
-        }
+        <li class="get-site-btn"><a href="mailto:simlex.dev.2014@gmail.com">Заказать сайт</a></li>
+        <li class="examples-site-btn"><a href="#">Примеры работ</a></li>
     </ul>
 </div>
