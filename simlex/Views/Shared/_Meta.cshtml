@@ -1,10 +1,24 @@
-﻿@{ 
+﻿@{
     var controller = ViewController;
 }
 <div class="l-b meta">
     <h4 class="meta-title">Ссылки</h4>
     <ul>
-        <li @(controller=="account" ? "class=active":null)><a href="@Url.Action("Login", "Account")">Log in</a></li>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li @(controller == "account" ? "class=active" : null)><a href="@Url.Action("Login", "Account")">Вход</a></li>
+        }
+        else
+        {
+            <li>
+                <form method="post" action="@Url.Action("Logoff", "Account")">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="url" value="@Url.Action("List", "Articles")" />
+                    <a href="#" onclick="$(this).closest('form').submit(); return false;">Выход</a>
+                </form>
+            </li>
+            <li><a href="@Url.Action("Index", "Home", new { area="admin"})">Управление</a></li>
+        }
         <li><a href="#">Comments RSS</a></li>
         <li><a href="#">Entries RSS</a></li>
     </ul>

@@ -132,11 +132,15 @@
     <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\GraphicsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MaterialCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MaterialTagsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuItemsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SeoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShareButtonsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SiteNetsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -146,6 +150,7 @@
     <Compile Include="Controllers\Abstract\MaterialsController.cs" />
     <Compile Include="Controllers\MaterialCategoriesController.cs" />
     <Compile Include="Controllers\MaterialTagsController.cs" />
+    <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\SiteNetsController.cs" />
     <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -193,6 +198,7 @@
     <Content Include="Views\Shared\DisplayTemplates\SxVMComment.cshtml" />
     <Content Include="Views\Users\About.cshtml" />
     <Content Include="Views\SiteNets\_Accordion.cshtml" />
+    <None Include="Properties\PublishProfiles\RELEASE.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="scripts\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SX.WebCore\SX.WebCore\SX.WebCore.csproj">

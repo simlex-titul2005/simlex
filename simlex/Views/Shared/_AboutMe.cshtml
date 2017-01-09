@@ -1,5 +1,9 @@
-﻿<div class="l-b about-me">
-    <div class="about-me-img"></div>
+﻿@{ 
+    var logoImageId = SiteSettingsProvider["logo-image-id"]?.Value;
+    var imageUrl = logoImageId != null ? Url.Action("Picture", "Pictures", new { id = logoImageId }) : "/content/dist/i/static/logo.png";
+}
+<div class="l-b about-me">
+    <div class="about-me-img" style="background-image: url(@imageUrl);"></div>
     <h2 class="about-me-title">Привет, @("@username@")!</h2>
     <p class="about-me-text">
         Приветствую вас на своем сайте! Буду рад, если материалы, представленные здесь, помогут кому-то в освоении профессии программиста ASP.NET MVC. 
