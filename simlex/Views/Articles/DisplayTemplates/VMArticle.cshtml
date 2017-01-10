@@ -21,14 +21,14 @@
         <span class="fa fa-file-text-o"></span>
     </div>
     <div class="material__info">
-        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp;
+        <i class="fa fa-calendar-o" aria-hidden="true"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp;
         @if (mode == "small")
         {
-            <i class="fa fa-comment-o"></i> @:Комментариев: <span>@Model.CommentsCount</span>
+            <i class="fa fa-comment-o" aria-hidden="true"></i> @:Комментариев: <span>@Model.CommentsCount</span>
         }
         else
         {
-            <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
+            <a href="#comments-block"><i class="fa fa-comment-o" aria-hidden="true"></i> Комментариев: <span>@Model.CommentsCount</span></a>
         }
     </div>
     <div class="material__img">

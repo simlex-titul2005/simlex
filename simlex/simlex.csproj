@@ -157,6 +157,7 @@
     <Compile Include="Controllers\MaterialTagsController.cs" />
     <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\SiteNetsController.cs" />
+    <Compile Include="Controllers\SiteSettingsController.cs" />
     <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">

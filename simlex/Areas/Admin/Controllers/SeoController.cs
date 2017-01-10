@@ -4,5 +4,6 @@ namespace simlex.Areas.Admin.Controllers
 {
     public sealed class SeoController : SxSeoController
     {
+        
     }
 }
