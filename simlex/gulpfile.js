@@ -30,17 +30,17 @@ function createCss() {
         .pipe(concat('site.min.css'))
         .pipe(gulp.dest('content/dist/css'));
 
-    //by one less
-    //gulp.src([
-    //   'less/error-page.less'
-    //])
-    //    .pipe(less())
-    //    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    //    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
-    //    .pipe(rename({
-    //        suffix: '.min'
-    //    }))
-    //    .pipe(gulp.dest('content/dist/css'));
+    // by one less
+    gulp.src([
+       'less/monty-hall.less'
+    ])
+        .pipe(less())
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('content/dist/css'));
 }
 
 function createJs() {
@@ -54,14 +54,14 @@ function createJs() {
 
 
     //by one js
-    //gulp.src([
-    //    'scripts/ge-for-gamers-block.js'
-    //])
-    //    .pipe(uglify())
-    //    .pipe(rename({
-    //        suffix: '.min'
-    //    }))
-    //    .pipe(gulp.dest('content/dist/js'));
+    gulp.src([
+        'scripts/monty-hall.js'
+    ])
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('content/dist/js'));
 }
 
 gulp.task('watch', function (cb) {

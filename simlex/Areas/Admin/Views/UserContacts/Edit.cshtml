@@ -1,0 +1,52 @@
+﻿@model SxVMUserContact
+
+@{
+    var isNew = !Model.ContactType.HasValue;
+    var user = (SxVMAppUser)ViewBag.User;
+    ViewBag.Title = $"{(isNew ? "Добавление" : "Редактирование")} контакта пользователя {user.NikName}";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<form method="post" action="@Url.Action("Edit")">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.UserId)
+    @Html.HiddenFor(x => x.OldContactType)
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(x => x.ContactType, new { @class = "control-label" })
+                @if (Model.OldContactType.HasValue)
+                {
+                    @Html.EnumDropDownListFor(x => x.ContactType, new { @class = "form-control", @disabled = "disabled" })
+                    @Html.HiddenFor(x => x.ContactType)
+                }
+                else
+                {
+                    @Html.EnumDropDownListFor(x => x.ContactType, new { @class = "form-control" })
+                }
+
+                @Html.ValidationMessageFor(x => x.ContactType)
+            </div> 
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                @Html.LabelFor(x => x.Value, new { @class = "control-label" })
+                @Html.EditorFor(x => x.Value, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Value)
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <a href="@Url.Action("Index", "UserContacts", new { userId=user.Id})" class="btn btn-default">Назад</a>
+        <button type="submit" class="btn btn-primary">@(isNew ? "Добавить" : "Править")</button>
+    </div>
+</form>
+
+@section scripts{
+    <script src="@Url.Action("Js", "StaticContent", new { name="jquery.validate", area=""})"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="jquery.validate.unobtrusive", area=""})"></script>
+}

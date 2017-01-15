@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "target": "es5",
+    "outFile": "../../monty-hall.js"
+  },
+  "files": [
+    "monty-hall.ts"
+  ],
+  "compileOnSave": true
+}

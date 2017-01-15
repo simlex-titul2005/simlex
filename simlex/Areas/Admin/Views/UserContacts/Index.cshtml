@@ -1,0 +1,21 @@
+﻿@model SxVMUserContact[]
+
+@{ 
+    var user = (SxVMAppUser)ViewBag.User;
+    ViewBag.Title = $"Контакты пользователя {user.NikName}";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<div id="user-contacts">
+    @Html.Partial("_GridView", Model)
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            var grid = new SxGridView('#user-contacts');
+        });
+    </script>
+}

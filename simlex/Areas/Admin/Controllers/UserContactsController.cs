@@ -2,7 +2,7 @@
 
 namespace simlex.Areas.Admin.Controllers
 {
-    public sealed class SeoController : SxSeoController
+    public sealed class UserContactsController : SxUserContactsController
     {
     }
 }

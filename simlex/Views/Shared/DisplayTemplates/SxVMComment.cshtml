@@ -7,7 +7,7 @@
     <div class="comment__content">
         <div class="comment__author-name">@(Model.User?.NikName ?? Model.UserName)</div>
         <div class="comment__date">
-            <a href="#sx-comment-@Model.Id"><i class="fa fa-clock-o" aria-hidden="true"></i> @Model.DateCreate.ToString("MMMM dd, yyyy") в @Model.DateCreate.ToString("hh : mm")</a>
+            <a href="#sx-comment-@Model.Id"><i class="fa fa-clock-o"></i> @Model.DateCreate.ToString("MMMM dd, yyyy") в @Model.DateCreate.ToString("hh : mm")</a>
         </div>
         <p class="comment__text">
             @Model.Html

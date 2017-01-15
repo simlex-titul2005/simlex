@@ -15,7 +15,7 @@
                 {
                     var material = Model.Materials[i];
                     <li>
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i> <a href="@material.GetUrl(Url)">@material.Title</a>
+                        <i class="fa fa-file-text-o"></i> <a href="@material.GetUrl(Url)">@material.Title</a>
                     </li>
                 }
             </ul>
@@ -27,7 +27,7 @@
                     var commentedMaterial = Model.CommentedMaterials[i];
 
                     <li>
-                        <i class="fa fa-comment-o" aria-hidden="true"></i> <span class="mat-stat__comment-author">@(commentedMaterial.LastComment.User?.NikName ?? commentedMaterial.LastComment?.UserName)</span> <a href="@($"{commentedMaterial.GetUrl(Url)}#sx-comment-{commentedMaterial.LastComment.Id}")">@commentedMaterial.Title</a>
+                        <i class="fa fa-comment-o"></i> <span class="mat-stat__comment-author">@(commentedMaterial.LastComment.User?.NikName ?? commentedMaterial.LastComment?.UserName)</span> <a href="@($"{commentedMaterial.GetUrl(Url)}#sx-comment-{commentedMaterial.LastComment.Id}")">@commentedMaterial.Title</a>
                     </li>
                 }
             </ul>

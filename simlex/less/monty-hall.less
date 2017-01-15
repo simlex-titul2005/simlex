@@ -1,0 +1,25 @@
+﻿@import (reference) "colors.less";
+@import (reference) "sizes.less";
+
+#monty-hall {
+    margin:@def-pad*2 0;
+}
+
+#monty-hall .monty-hall__door[data-selected="true"] img{
+    border:3px solid @color-accent;
+}
+
+#monty-hall .monty-hall__header{
+    font-family: 'Roboto Slab',serif;
+    font-weight: 700;
+    color:@color-black;
+    margin-bottom:@def-pad*2;
+}
+
+#monty-hall .monty-hall__table{
+    font-size:12px;
+}
+
+#monty-hall img{
+    max-width:100%;
+}

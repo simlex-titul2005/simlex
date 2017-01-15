@@ -1,24 +1,18 @@
-﻿@using SX.WebCore
-
-@{
+﻿@{
     Layout = null;
     var lang = SiteSettingsProvider["lang"]?.Value ?? "ru";
-    var isLocal = Request.IsLocal;
 }
+
 <!DOCTYPE html>
 <html>
 <head lang="@lang">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="@Url.ContentAbsUrl(Url.Action("GetFavIcon", "SiteSettings", new { v=1 }))" type="image/x-icon">
     <title>@ViewBag.Title</title>
+
     <link href="@Url.Action("Css", "StaticContent", new { name="bootstrap"})" rel="stylesheet" />
     <link href="@Url.Action("Css", "StaticContent", new { name="font-awesome"})" rel="stylesheet" />
     <link href="~/content/dist/css/site.min.css" rel="stylesheet" />
-    @if (!isLocal)
-    {
-        <meta name="yandex-verification" content="00dcd4d58766c0ce" />
-    }
 </head>
 <body>
     <div class="page-wrapper">
@@ -55,26 +49,7 @@
             var navbar = new Navbar();
             navbar.initialize('.nav-bar');
         });
-
-
     </script>
     @RenderSection("scripts", false)
-    @if (!isLocal)
-    {
-        @* analitics*@
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-            ga('create', 'UA-52276782-5', 'auto');
-            ga('send', 'pageview');
-
-        </script>
-    }
-
 </body>
 </html>

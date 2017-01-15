@@ -112,16 +112,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\dist\css\monty-hall.min.css" />
     <Content Include="content\dist\css\site.min.css" />
     <Content Include="content\dist\i\static\incognito.jpg" />
     <Content Include="content\dist\i\static\logo.png" />
+    <Content Include="content\dist\i\static\monty-hall\door-empty.jpg" />
+    <Content Include="content\dist\i\static\monty-hall\door.jpg" />
     <Content Include="content\dist\i\static\photo.png" />
     <Content Include="content\dist\i\temp\addsens.jpg" />
+    <Content Include="content\dist\js\monty-hall.min.js" />
     <Content Include="content\dist\js\site.min.js" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="scripts\sxcomments.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
@@ -146,6 +152,7 @@
     <Compile Include="Areas\Admin\Controllers\SiteNetsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserContactsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValutesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -157,7 +164,6 @@
     <Compile Include="Controllers\MaterialTagsController.cs" />
     <Compile Include="Controllers\SeoController.cs" />
     <Compile Include="Controllers\SiteNetsController.cs" />
-    <Compile Include="Controllers\SiteSettingsController.cs" />
     <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,6 +205,10 @@
     <Content Include="Views\Shared\DisplayTemplates\SxVMComment.cshtml" />
     <Content Include="Views\Users\About.cshtml" />
     <Content Include="Views\SiteNets\_Accordion.cshtml" />
+    <Content Include="Areas\Admin\Views\UserContacts\_GridView.cshtml" />
+    <Content Include="Areas\Admin\web.config" />
+    <Content Include="Areas\Admin\Views\UserContacts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserContacts\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\RELEASE.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -207,7 +217,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\SX.WebCore\SX.WebCore\SX.WebCore.csproj">
       <Project>{daf1a092-ded8-4c43-b08d-20e55c6f03a2}</Project>

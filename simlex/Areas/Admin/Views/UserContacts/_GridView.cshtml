@@ -1,0 +1,17 @@
+﻿@model SxVMUserContact[]
+@{
+    var user = (SxVMAppUser)ViewBag.User;
+}
+
+@Html.SxGridView(Model, new SxExtantions.SxGridViewSettings<SxVMUserContact>()
+{
+    Columns = new SxExtantions.SxGridViewColumn<SxVMUserContact>[] {
+        new SxExtantions.SxGridViewColumn<SxVMUserContact>() { Caption="Тип", FieldName="ContactType" },
+        new SxExtantions.SxGridViewColumn<SxVMUserContact>() { Caption = "Значение", FieldName="Value" }
+    },
+    DataAjaxUrl = Url.Action("Index", "UserContacts", new { userId = user.Id }),
+    EnableCreating = true,
+    CreateRowUrl = Url.Action("Edit", "UserContacts", new { userId = user.Id }),
+    EnableEditing=true,
+    EditRowUrl=x=> Url.Action("Edit", "UserContacts", new { userId = user.Id, ct=x.ContactType })
+})
