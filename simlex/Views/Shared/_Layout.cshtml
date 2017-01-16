@@ -1,17 +1,37 @@
-﻿@{
+﻿@using SX.WebCore;
+@{
     Layout = null;
     var lang = SiteSettingsProvider["lang"]?.Value ?? "ru";
+    var title = ViewBag.Title == null ? SX.WebCore.MvcApplication.SxMvcApplication.DefaultSiteName : $"{ViewBag.Title} | {SX.WebCore.MvcApplication.SxMvcApplication.DefaultSiteName}";
 }
-
 <!DOCTYPE html>
 <html>
 <head lang="@lang">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-
-    <link href="@Url.Action("Css", "StaticContent", new { name="bootstrap"})" rel="stylesheet" />
-    <link href="@Url.Action("Css", "StaticContent", new { name="font-awesome"})" rel="stylesheet" />
+    <meta property="og:url" content="@Url.ContentAbsUrl(Request.RawUrl)" />
+    @if (title != null)
+    {
+        <title>@title</title>
+        <meta property="og:title" content="@title" />
+    }
+    @if (ViewBag.Description != null)
+    {
+        <meta name="description" content="@ViewBag.Description" />
+        <meta property="og:description" content="@ViewBag.Description" />
+    }
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.Keywords" />
+    }
+    @if (ViewBag.PageImage != null)
+    {
+        var pageImgUrl = Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = ViewBag.PageImage }));
+        <meta property="og:image" content="@pageImgUrl" />
+    }
+    @RenderSection("meta", false)
+    <link href="@Url.Action("Css", "StaticContent", new { name = "bootstrap" })" rel="stylesheet" />
+    <link href="@Url.Action("Css", "StaticContent", new { name = "font-awesome" })" rel="stylesheet" />
     <link href="~/content/dist/css/site.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -48,6 +68,10 @@
 
             var navbar = new Navbar();
             navbar.initialize('.nav-bar');
+
+            @*var netsSettings = new Array();
+            netsSettings.push(new NetSetting('vk', { url: '@Url.Action("GetVkUsers", "SiteNets")', data: { group_id: 1, count: 16} }));
+            var nets = new Nets(netsSettings);*@
         });
     </script>
     @RenderSection("scripts", false)

@@ -1,6 +1,33 @@
-﻿@model SxExtantions.SxPagedCollection<simlex.ViewModels.VMArticle>
+﻿@using SX.WebCore.ViewModels;
+@model SxExtantions.SxPagedCollection<simlex.ViewModels.VMArticle>
+@{
+    ViewBag.Title = ViewBag.Title ?? "Статьи";
+    var tag = (SxVMMaterialTag)ViewBag.Tag;
+    if (tag != null)
+    {
+        ViewBag.Title += $" с тегом {tag.Title}";
+    }
+    var category = (SxVMMaterialCategory)ViewBag.Category;
+    if (category != null)
+    {
+        ViewBag.Title += $" категории {category.Title}";
+    }
+    var author = (SxVMAppUser)ViewBag.Author;
+    if (author != null)
+    {
+        ViewBag.Title += $" автора {author.NikName}";
+    }
+    var page = ViewBag.Page;
+    if (page > 1)
+    {
+        ViewBag.Title += $" [{page}]";
+    }
+
+}
+
+<h1 class="hide">@(ViewBag.Title)</h1>
 
 @for (int i = 0; i < Model.Collection.Length; i++)
 {
-    @Html.DisplayFor(x=> Model.Collection[i], new { Mode="small" })
+    @Html.DisplayFor(x => Model.Collection[i], new { Mode = "small" })
 }

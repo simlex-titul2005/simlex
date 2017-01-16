@@ -1,25 +1,40 @@
-﻿@model simlex.ViewModels.VMArticle
+﻿@using SX.WebCore;
+
+@model simlex.ViewModels.VMArticle
 @{
     var mode = ViewData["Mode"]?.ToString();
 }
-<div class="material">
+<div class="material @mode" itemscope itemtype="http://schema.org/Article">
+    <meta itemprop="datePublished" content="@Model.DateOfPublication.ToString("o")" />
+    <meta itemprop="dateModified" content="@Model.DateUpdate.ToString("o")" />
+    <meta itemprop="headline" content="@(Model.SeoTags?.H1 ?? Model.Title)" />
+    <meta itemprop="mainEntityOfPage" content="@(Url.ContentAbsUrl(Request.RawUrl))" />
+
+    <span itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
+        <meta itemprop="name" content="@MvcApplication.DefaultSiteName" />
+        <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+            <meta itemprop="url" content="@Url.ContentAbsUrl(Url.Action("GetFavIcon", "SiteSettings"))" />
+        </span>
+    </span>
+
     @if (mode == "small")
     {
-        <h2 class="material__title">
+        <h2 class="material__title" itemprop="name">
             <a href="@Model.GetUrl(Url)">@Model.Title</a>
         </h2>
     }
     else
     {
-        <h1 class="material__title">@Model.Title</h1>
+        <h1 class="material__title">@(Model.SeoTags?.H1 ?? Model.Title)</h1>
     }
-    <div class="material__author">
-        Автор: <a href="@Url.Action("List", "Articles", new { author=Model.User.NikName })">@(Model.User.NikName)</a>
+    <div class="material__author" itemscope itemtype="http://schema.org/Person" itemprop="author">
+        Автор: <a href="@Url.Action("List", "Articles", new { author=Model.User.NikName })"><span itemprop="name">@Model.User.NikName</span></a>
         @if (Model.Category != null)
         {
-            @:"&nbsp; категория" <a href="@Url.Action("List", "Articles", new { category = Model.Category.Id })">@(Model.Category.Title)</a>
+            @:&nbsp; категория <a href="@Url.Action("List", "Articles", new { category = Model.Category.Id })">@(Model.Category.Title)</a>
         }
     </div>
+
     <div class="material__delimiter">
         <span class="material__delimiter-line"></span>
         <span class="fa fa-file-text-o"></span>
@@ -35,18 +50,33 @@
             <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
         }
     </div>
-    <div class="material__img">
-        @if (mode == "small")
-        {
-            <a href="@Model.GetUrl(Url)">
+
+    @if (mode != "small")
+    {
+        <div class="material__fwd">
+            @Model.Foreword
+        </div>
+    }
+
+    @if (Model.FrontPictureId.HasValue)
+    {
+        <div class="material__img" itemscope itemtype="http://schema.org/ImageObject" itemprop="image">
+            <meta itemprop="name" content="@Model.Title" />
+            <meta itemprop="height" content="@Model.FrontPicture.Height" />
+            <meta itemprop="width" content="@Model.FrontPicture.Width" />
+            <meta itemprop="url" content="@Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))" />
+            @if (mode == "small")
+                {
+                <a href="@Model.GetUrl(Url)">
+                    <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
+                </a>
+            }
+            else
+            {
                 <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
-            </a>
-        }
-        else
-        {
-            <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
-        }
-    </div>
+            }
+        </div>
+    }
     @if (mode == "small")
     {
         <div class="material__fwd">
@@ -55,7 +85,7 @@
     }
     else
     {
-        <div class="material__html">
+        <div class="material__html" itemprop="articleBody">
             @Html.Raw(Model.Html)
         </div>
     }

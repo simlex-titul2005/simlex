@@ -1,24 +1,28 @@
-﻿@model SX.WebCore.ViewModels.SxVMSiteNet[]
-
-@if (Model.Any())
+﻿@model simlex.ViewModels.VMNetAccordion
+@if (Model.Nets.Any())
 {
     SX.WebCore.ViewModels.SxVMSiteNet item;
     <aside class="accordion">
         <div id="accordion" role="tablist" aria-multiselectable="true">
-            @for (int i = 0; i < Model.Length; i++)
+            @for (int i = 0; i < Model.Nets.Length; i++)
             {
-                item = Model[i];
+                item = Model.Nets[i];
                 <div class="panel">
                     <div class="panel-heading" role="tab" id="site-net-heading-@item.NetId">
                         <h4 class="panel-title">
-                            <a class="@(i==0?null:"collapsed")" role="button" data-toggle="collapse" data-parent="#accordion" href="#site-net-@item.NetId" aria-expanded="true" aria-controls="site-net-@item.NetId">
+                            <a class="@(i==0?null:"collapsed")" role="button" data-toggle="collapse" data-parent="#accordion" href="#site-net-@item.NetId" aria-expanded="true" aria-controls="site-net-@item.NetId" data-net-code="@item.Net.Code">
                                 @item.Net.Name
                             </a>
                         </h4>
                     </div>
                     <div id="site-net-@item.NetId" class="panel-collapse collapse @(i==0?"in":null)" role="tabpanel" aria-labelledby="site-net-heading-@item.NetId">
-                        <div class="panel-body">
-                            Proin non sodales leo, vel ullamcorper ante. Etiam gravida sem ac dui aliquam, ut rhoncus neque fermentum. Ut sagittis posuere dolor, vitae adipiscing velit imperdiet posuere. Nullam a purus ut lorem sollicitudin pharetra. Proin aliquet dignissim placerat. Proin lacinia nisi egestas molestie semp
+                        <div class="modal-body">
+                            @switch (item.Net.Code)
+                            {
+                                case "vk":
+                                    Html.RenderPartial("_VkUsers", Model.GetItems<simlex.ViewModels.Vk.VMVkUser>(item.Net.Code));
+                                    break;
+                            }
                         </div>
                     </div>
                 </div>
