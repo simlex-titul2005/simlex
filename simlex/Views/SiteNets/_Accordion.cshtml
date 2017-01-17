@@ -20,7 +20,7 @@
                             @switch (item.Net.Code)
                             {
                                 case "vk":
-                                    Html.RenderPartial("_VkUsers", Model.GetItems<simlex.ViewModels.Vk.VMVkUser>(item.Net.Code));
+                                    Html.RenderPartial("_VkUsers", Model.GetItems<SX.VkApi.Models.User>(item.Net.Code));
                                     break;
                             }
                         </div>

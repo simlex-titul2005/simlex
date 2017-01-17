@@ -48,30 +48,21 @@ namespace simlex.Controllers
             return PartialView("_Accordion", viewModel);
         }
 
-        private static HashSet<VMVkUser> getVkUsers(int group_id, int count = 10)
+        private static SX.VkApi.Models.User[] getVkUsers(int group_id, int count = 10)
         {
-            var data = new HashSet<VMVkUser>();
-            var accessToken = "4d32a78e4a22d41f61ca617954c69e7c2e3109cd6886f55b91a3e7b27d10289f0d191992beb0eb3d8794f";
-            using (var webClient = new WebClient())
-            {
-                var json = webClient.DownloadString($"https://api.vk.com/method/users.search?group_id={group_id}&has_photo=1&fields=photo&count={count}&access_token={accessToken}&v=5.62");
-                var array = ((Newtonsoft.Json.Linq.JArray)Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json).response.items).ToArray();
+            var accessToken = "e3223f3e185d32e33f83d8fc357d106237a7ffb40e9b919d76a93547c0ff9a0623cb7c9fbe2b619f08a47";
 
-                Newtonsoft.Json.Linq.JToken item;
-                for (int i = 0; i < array.Length; i++)
-                {
-                    item = array[i];
-                    data.Add(new VMVkUser()
-                    {
-                        Id = Convert.ToInt32(item["uid"]),
-                        FirstName = (string)item["first_name"],
-                        LastName = (string)item["last_name"],
-                        Photo = (string)item["photo"]
-                    });
+            var request = new SX.VkApi.Request(accessToken);
+            var response = request.Users.Search(new SX.VkApi.Parameters.Users.ParametersSearch() {
+                Q= "Vasya Babich",
+                Fields=new SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields[] {
+                    SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.city,
+                    SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.has_photo,
+                    SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.photo_50
                 }
-            }
+            });
 
-            return data;
+            return response.Items;
         }
     }
 }

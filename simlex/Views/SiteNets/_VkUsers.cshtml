@@ -1,7 +1,7 @@
-﻿@model simlex.ViewModels.Vk.VMVkUser[]
+﻿@model SX.VkApi.Models.User[]
 @if (Model.Any())
 {
-    simlex.ViewModels.Vk.VMVkUser item;
+    SX.VkApi.Models.User item;
     <ul class="net-users">
         @for (int i = 0; i < Model.Length; i++)
         {
@@ -9,7 +9,7 @@
             <li>
                 <div class="net-users__item">
                     <a href="#">
-                        <img alt="@($"{item.FirstName} {item.LastName}")" src="@item.Photo" />
+                        <img alt="@($"{item.FirstName} {item.LastName}")" src="@item.Photo_50" />
                     </a>
                 </div>
             </li>
