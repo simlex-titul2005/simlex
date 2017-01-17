@@ -144,6 +144,8 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Abstract\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApiParametersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannedUrlsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />

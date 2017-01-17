@@ -8,7 +8,7 @@
             item = Model[i];
             <li>
                 <div class="net-users__item">
-                    <a href="#">
+                    <a href="@($"http://vk.com/{item.Domain}")" target="_blank" rel="nofollow">
                         <img alt="@($"{item.FirstName} {item.LastName}")" src="@item.Photo_50" />
                     </a>
                 </div>
