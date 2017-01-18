@@ -8,5 +8,16 @@ namespace simlex.Infrastructure
         public DbContext() : base("DbContext") { }
 
         public new DbSet<Article> Articles { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<Project>().HasRequired(x => x.Material).WithMany().HasForeignKey(x => new { x.Id, x.ModelCoreType });
+        }
+
+        
     }
 }

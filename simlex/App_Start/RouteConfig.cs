@@ -10,6 +10,8 @@ namespace simlex
         public static Action<RouteCollection> PreRouteAction = routes =>
         {
             routes.MapRoute(name: null, url: "Users/About/{nikname}", defaults: new { controller = "Users", action = "About" }, namespaces: _defNamespases);
+
+            routes.MapRoute(name: null, url: "Projects/{titleUrl}", defaults: new { controller = "Projects", action = "Details" }, namespaces: _defNamespases);
         };
 
         public static Action<RouteCollection> PostRouteAction = routes =>

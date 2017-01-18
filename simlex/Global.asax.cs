@@ -1,4 +1,5 @@
-﻿using System;
+﻿using simlex.Models;
+using System;
 using System.Collections.Generic;
 
 namespace simlex
@@ -7,12 +8,21 @@ namespace simlex
     {
         private static readonly Dictionary<string, byte> _customModelCoreTypes = new Dictionary<string, byte>()
         {
-
+            [nameof(Project)]=100
         };
 
 
         private static string _getModelCoreTypeNames(byte mct)
         {
+            switch(mct)
+            {
+                case 1:
+                    return "Статьи";
+                case 2:
+                    return "Новости";
+                case 100:
+                    return "Проекты";
+            }
             return mct.ToString();
         }
 

@@ -8,9 +8,13 @@ namespace simlex
     {
         public static void Register(IMapperConfigurationExpression cfg)
         {
-            //article
+            // article
             cfg.CreateMap<Article, VMArticle>();
             cfg.CreateMap<VMArticle, Article>();
+
+            // project
+            cfg.CreateMap<Project, VMProject>();
+            cfg.CreateMap<VMProject, Project>();
         }
     }
 }

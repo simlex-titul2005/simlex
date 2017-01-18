@@ -2,9 +2,9 @@
 
 namespace simlex.ViewModels
 {
-    public sealed class MaterialsStatisticBlock
+    public sealed class VMMaterialsStatisticBlock
     {
-        public MaterialsStatisticBlock()
+        public VMMaterialsStatisticBlock()
         {
             CommentedMaterials = new VMMaterial[0];
             Materials = new VMMaterial[0];

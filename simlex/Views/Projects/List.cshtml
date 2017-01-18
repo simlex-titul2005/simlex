@@ -1,0 +1,11 @@
+﻿@model SxExtantions.SxPagedCollection<simlex.ViewModels.VMProject>
+    @{ 
+        ViewBag.Title = ViewBag.Title ?? "Проекты";
+    }
+
+<h1 class="hide">@(ViewBag.H1 ?? ViewBag.Title)</h1>
+
+@for (int i = 0; i < Model.Collection.Length; i++)
+{
+    @Html.DisplayFor(x => Model.Collection[i], new { Mode = "small" })
+}

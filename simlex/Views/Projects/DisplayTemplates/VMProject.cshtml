@@ -1,0 +1,120 @@
+﻿@using SX.WebCore;
+
+@model simlex.ViewModels.VMProject
+@{
+    var mode = ViewData["Mode"]?.ToString();
+}
+
+<div class="material @mode" itemscope itemtype="http://schema.org/Article">
+    <meta itemprop="datePublished" content="@Model.DateOfPublication.ToString("o")" />
+    <meta itemprop="dateModified" content="@Model.DateUpdate.ToString("o")" />
+    <meta itemprop="headline" content="@(Model.SeoTags?.H1 ?? Model.Title)" />
+    <meta itemprop="mainEntityOfPage" content="@(Url.ContentAbsUrl(Request.RawUrl))" />
+
+    <span itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
+        <meta itemprop="name" content="@MvcApplication.DefaultSiteName" />
+        <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+            <meta itemprop="url" content="@Url.ContentAbsUrl(Url.Action("GetFavIcon", "SiteSettings"))" />
+        </span>
+    </span>
+
+    @if (mode == "small")
+    {
+        <h2 class="material__title" itemprop="name">
+            <a href="@Model.GetUrl(Url)">@Model.Title</a>
+        </h2>
+    }
+    else
+    {
+        <h1 class="material__title">@(Model.SeoTags?.H1 ?? Model.Title)</h1>
+    }
+    <div class="material__author" itemscope itemtype="http://schema.org/Person" itemprop="author">
+        Автор: <a href="@Url.Action("List", "Articles", new { author=Model.User.NikName })"><span itemprop="name">@Model.User.NikName</span></a>
+        @if (Model.Category != null)
+        {
+            @:&nbsp; категория <a href="@Url.Action("List", "Articles", new { category = Model.Category.Id })">@(Model.Category.Title)</a>
+        }
+    </div>
+
+    <div class="material__delimiter">
+        <span class="material__delimiter-line"></span>
+        <span class="fa fa-file-text-o"></span>
+    </div>
+    <div class="material__info">
+        <i class="fa fa-calendar-o"></i> <span>@Model.DateOfPublication.ToString("MMMM dd, yyyy")</span> &nbsp;
+        @if (mode == "small")
+        {
+            <i class="fa fa-comment-o"></i> @:Комментариев: <span>@Model.CommentsCount</span>
+        }
+        else
+        {
+            <a href="#comments-block"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
+        }
+    </div>
+
+    @if (mode != "small")
+    {
+        <div class="material__fwd">
+            @Model.Foreword
+        </div>
+    }
+
+    @if (Model.FrontPictureId.HasValue)
+    {
+        <div class="material__img" itemscope itemtype="http://schema.org/ImageObject" itemprop="image">
+            <meta itemprop="name" content="@Model.Title" />
+            <meta itemprop="height" content="@Model.FrontPicture.Height" />
+            <meta itemprop="width" content="@Model.FrontPicture.Width" />
+            <meta itemprop="url" content="@Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))" />
+            @if (mode == "small")
+                {
+                <a href="@Model.GetUrl(Url)">
+                    <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
+                </a>
+            }
+            else
+            {
+                <img alt="@(Model.FrontPicture?.Caption ?? Model.Title)" src="@Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId })" />
+            }
+        </div>
+    }
+    @if (mode == "small")
+    {
+        <div class="material__fwd">
+            @Html.Raw(Model.Foreword ?? Model.GetForewordFromHtml(300))
+        </div>
+    }
+    else
+    {
+        <div class="material__html" itemprop="articleBody">
+            @Html.Raw(Model.Html)
+        </div>
+
+        <div class="share">
+            @Html.SxShareButtons(settings: new SxExtantions.SxShareSettings()
+       {
+           ItemTemplate = x => $"<li title=\"{x.Net.Name}\" class=\"sxshare\" data-net-code=\"{x.Net.Code}\" data-show-counter=\"{x.ShowCounter.ToString().ToLower()}\" data-url=\"{Url.ContentAbsUrl(Model.GetUrl(Url))}\" data-image=\"{Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))}\" data-title=\"{Model.Title}\" data-desc=\"{Model.GetForewordFromHtml(300)}\"><a href=\"#\" style=\"background-color:{x.Net.Color}\"><i class=\"{x.Net.LogoCssClass}\"></i></a><span class=\"sxshare__counter\"></span></li>"
+       })
+        </div>
+    }
+    @if (mode == "small")
+    {
+        <div class="material__btn">
+            <a href="@Model.GetUrl(Url)" class="btn btn-black">Подробнее</a>
+        </div>
+    }
+    else
+    {
+        if (Model.MaterialTags.Any())
+        {
+            <div class="material__tags">
+                <span class="material__tags-title">Теги</span>
+                @for (int i = 0; i < Model.MaterialTags.Length; i++)
+                {
+                    var tag = Model.MaterialTags[i];
+                    <a href="@Url.Action("List", "Articles", new { tag = tag.Id })" rel="tag" class="btn btn-accent inverse">@tag.Title</a>
+                }
+            </div>
+        }
+    }
+</div>

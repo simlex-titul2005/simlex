@@ -42,7 +42,7 @@ namespace simlex.Controllers
 #endif
         public PartialViewResult Statistic()
         {
-            var viewModel = new MaterialsStatisticBlock()
+            var viewModel = new VMMaterialsStatisticBlock()
             {
                 Materials = Repo.Read(new SX.WebCore.SxFilter(1, 10)),
                 CommentedMaterials = Repo.LastCommented<VMMaterial>(new SX.WebCore.SxFilter(1, 10) { ModelCoreType=1 }),

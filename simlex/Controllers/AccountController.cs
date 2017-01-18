@@ -11,5 +11,11 @@ namespace simlex.Controllers
         {
             return base.Login(model, Url.Action("List", "Articles"));
         }
+
+        public override ActionResult LogOff(string url = null)
+        {
+            url = Url.Action("List", "Articles");
+            return base.LogOff(url);
+        }
     }
 }
