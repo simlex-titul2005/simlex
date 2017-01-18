@@ -3,7 +3,7 @@ using SX.WebCore.ViewModels;
 
 namespace simlex.ViewModels
 {
-    public class VMMaterial : SX.WebCore.ViewModels.VMMaterial
+    public class VMMaterial : SxVMMaterial
     {
         public VMMaterial()
         {
