@@ -21,11 +21,15 @@
     @Html.Partial("~/Views/Comments/_List.cshtml", Model.Comments, new ViewDataDictionary { { "MaterialId", Model.Id }, { "ModelCoreType", Model.ModelCoreType } })
 </div>
 @section scripts{
-    <script src="~/scripts/sxcomments.js"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="sxshare" })"></script>
+    <script src="~/content/dist/js/sxcomments.min.js"></script>
     <script>
         $(function () {
             var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block');
             comments.initialize();
+
+            var share = new SxShare(".sxshare", true);
         });
     </script>
+
 }

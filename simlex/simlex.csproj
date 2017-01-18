@@ -131,9 +131,10 @@
     <Content Include="content\dist\i\temp\addsens.jpg" />
     <Content Include="content\dist\js\monty-hall.min.js" />
     <Content Include="content\dist\js\site.min.js" />
+    <Content Include="content\dist\js\sxcomments.min.js" />
+    <Content Include="content\dist\js\sxshare.min.js" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
-    <Content Include="scripts\sxcomments.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -246,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

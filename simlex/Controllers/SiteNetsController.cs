@@ -5,15 +5,12 @@ using simlex.ViewModels;
 using SX.WebCore.DbModels;
 using SX.WebCore.ViewModels;
 using System.Net;
+using System;
 
 namespace simlex.Controllers
 {
     public sealed class SiteNetsController : SxSiteNetsController
     {
-
-        //#if !DEBUG
-        //        [OutputCache(Duration = 3600)]
-        //#endif
         [AllowAnonymous, ChildActionOnly]
         public PartialViewResult Accordion()
         {
@@ -46,10 +43,13 @@ namespace simlex.Controllers
         private static SX.VkApi.Models.User[] getVkUsers(int group_id, int count = 10)
         {
             var access_token = SxApiParametersController.Repo.GetApiParameter("VK", "access_token");
+            var groupId = SxApiParametersController.Repo.GetApiParameter("VK", "group_id");
+
             var request = new SX.VkApi.Request(access_token.Value);
             var response = request.Users.Search(new SX.VkApi.Parameters.Users.ParametersSearch()
             {
                 Count = count,
+                GroupId= string.IsNullOrEmpty(groupId?.Value) ? (int?)null : Convert.ToInt32(groupId.Value),
                 Fields = new SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields[] {
                     SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.has_photo,
                     SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.photo_50,

@@ -4,6 +4,7 @@
 @{
     var mode = ViewData["Mode"]?.ToString();
 }
+
 <div class="material @mode" itemscope itemtype="http://schema.org/Article">
     <meta itemprop="datePublished" content="@Model.DateOfPublication.ToString("o")" />
     <meta itemprop="dateModified" content="@Model.DateUpdate.ToString("o")" />
@@ -87,6 +88,13 @@
     {
         <div class="material__html" itemprop="articleBody">
             @Html.Raw(Model.Html)
+        </div>
+
+        <div class="share">
+            @Html.SxShareButtons(settings: new SxExtantions.SxShareSettings()
+       {
+           ItemTemplate = x => $"<li title=\"{x.Net.Name}\" class=\"sxshare\" data-net-code=\"{x.Net.Code}\" data-show-counter=\"{x.ShowCounter.ToString().ToLower()}\" data-url=\"{Url.ContentAbsUrl(Model.GetUrl(Url))}\" data-image=\"{Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))}\" data-title=\"{Model.Title}\" data-desc=\"{Model.GetForewordFromHtml(300)}\"><a href=\"#\" style=\"background-color:{x.Net.Color}\"><i class=\"{x.Net.LogoCssClass}\"></i></a><span class=\"sxshare__counter\"></span></li>"
+       })
         </div>
     }
     @if (mode == "small")

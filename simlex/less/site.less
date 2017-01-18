@@ -1086,3 +1086,38 @@ ul {
     margin-left:20px;
     margin-bottom:20px;
 }
+
+//share
+.share{
+    margin-bottom:@def-pad*2;
+}
+
+.share li{
+    display:inline-block;
+    margin-right:@def-pad;
+    cursor:pointer;
+}
+
+.share li > .sxshare__counter{
+    margin-left:5px;
+    font-size:11px;
+    color:@color-gray;
+}
+
+@share-a-size:30px;
+.share a{
+    color:@color-white;
+    width:@share-a-size;
+    height:@share-a-size;
+    line-height:@share-a-size;
+    text-align:center;
+    border-radius:100%;
+    display:block;
+    font-size:12px;
+    float:left;
+}
+
+.share .share-buttons{
+    padding:0;
+    margin:0;
+}

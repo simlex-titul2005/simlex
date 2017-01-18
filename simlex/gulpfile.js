@@ -46,8 +46,7 @@ function createCss() {
 function createJs() {
     gulp.src([
         'scripts/page.js',
-        'scripts/navbar.js',
-        'scripts/nets.js'
+        'scripts/navbar.js'
     ])
         .pipe(uglify())
         .pipe(concat('site.min.js'))
@@ -56,7 +55,9 @@ function createJs() {
 
     //by one js
     gulp.src([
-        'scripts/monty-hall.js'
+        'scripts/monty-hall.js',
+        'scripts/sxcomments.js',
+        'scripts/sxshare.js'
     ])
         .pipe(uglify())
         .pipe(rename({
