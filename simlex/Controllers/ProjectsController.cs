@@ -29,5 +29,11 @@ namespace simlex.Controllers
 
             return View(viewModel);
         }
+
+        public override async Task<ActionResult> List(int page = 1, int pageSize = 10, bool? withPictures = null)
+        {
+            withPictures = true;
+            return await base.List(page, pageSize, withPictures);
+        }
     }
 }

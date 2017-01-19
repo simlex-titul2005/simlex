@@ -21,6 +21,9 @@ namespace simlex.Controllers
             }
         }
 
+#if !DEBUG
+        [OutputCache(Duration = 3600)]
+#endif
         [HttpGet]
         public async Task<ActionResult> Details(int year, string month, string day, string titleUrl)
         {

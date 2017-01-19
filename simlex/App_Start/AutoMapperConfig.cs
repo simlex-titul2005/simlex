@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using simlex.Models;
 using simlex.ViewModels;
+using SX.WebCore.ViewModels;
 
 namespace simlex
 {
@@ -11,6 +12,9 @@ namespace simlex
             // article
             cfg.CreateMap<Article, VMArticle>();
             cfg.CreateMap<VMArticle, Article>();
+
+            // VMMaterial
+            cfg.CreateMap<SxVMMaterial, VMMaterial>();
 
             // project
             cfg.CreateMap<Project, VMProject>();

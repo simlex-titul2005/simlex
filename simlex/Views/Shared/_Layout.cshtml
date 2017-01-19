@@ -45,6 +45,12 @@
                 @Html.Partial("_Meta")
             </div>
             <div class="page-col-7">
+                @if (Breadcrumbs != null && Breadcrumbs.Any())
+                {
+                    <div class="breadcrumbs">
+                        @Html.SxBreadcrumbs(Breadcrumbs)
+                    </div>
+                }
                 @RenderBody()
             </div>
             <div class="page-col-3">
