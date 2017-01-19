@@ -12,20 +12,25 @@
     <meta property="article:author" content="@Model.User.NikName" />
 }
 
-@Html.DisplayForModel()
-@if (Model.RelatedMaterials.Any())
-{
-    @Html.Partial("_Related", Model)
+@section styles{
+    <link rel="stylesheet" href="@Url.Action("Css", "StaticContent", new { name="lightbox" })" />
 }
+
+@Html.DisplayForModel()
+
 <div id="comments-block">
     @Html.Partial("~/Views/Comments/_List.cshtml", Model.Comments, new ViewDataDictionary { { "MaterialId", Model.Id }, { "ModelCoreType", Model.ModelCoreType } })
 </div>
+
 @section scripts{
     <script src="@Url.Action("Js", "StaticContent", new { name="sxshare" })"></script>
+    <script src="@Url.Action("Js", "StaticContent", new { name="lightbox" })"></script>
     <script src="~/content/dist/js/sxcomments.min.js"></script>
     <script>
         $(function () {
-            var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block');
+            var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block', function (form) {
+                $(form).closest('.sx-new-comment').find('.fa-spinner').show();
+            });
             comments.initialize();
 
             var share = new SxShare(".sxshare", true);

@@ -134,8 +134,6 @@
     <Content Include="content\dist\js\sxcomments.min.js" />
     <Content Include="content\dist\js\sxshare.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="gulpfile.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -204,12 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Articles\List.cshtml" />
-    <Content Include="bower.json" />
-    <Content Include="package.json" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_AboutMe.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
@@ -239,6 +234,7 @@
     <Content Include="Views\Projects\List.cshtml" />
     <Content Include="Views\Projects\DisplayTemplates\VMProject.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\_Pages.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -258,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

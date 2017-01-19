@@ -25,7 +25,9 @@
     <script src="~/content/dist/js/sxcomments.min.js"></script>
     <script>
         $(function () {
-            var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block');
+            var comments = new SxComments('#comments-block', '@Url.Action("Edit", "Comments")', '#comments-block', function (form) {
+                $(form).closest('.sx-new-comment').find('.fa-spinner').show();
+            });
             comments.initialize();
 
             var share = new SxShare(".sxshare", true);

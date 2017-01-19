@@ -5,12 +5,14 @@ class SxComments {
     private _form: JQuery;
     private _postUrl: string;
     private _target: JQuery;
+    private _beforeSend: any;
 
-    constructor(comments: any, postUrl: string, target: any) {
+    constructor(comments: any, postUrl: string, target: any, beforeSend?: any) {
         this._comments = $(comments);
         this._form = this._comments.find(".sx-new-comment");
         this._postUrl = postUrl;
         this._target = $(target);
+        this._beforeSend = beforeSend;
     }
 
     public initialize(): void {
@@ -44,6 +46,10 @@ class SxComments {
                 method: "post",
                 url: this._postUrl,
                 data: form.serialize(),
+                beforeSend: (): void => {
+                    if (this._beforeSend)
+                        this._beforeSend(form);
+                },
                 success: (data: any, status: string, xhr: JQueryXHR): void => {
                     this._target.html(data);
                 }

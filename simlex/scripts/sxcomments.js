@@ -1,10 +1,11 @@
 /// <reference path="../typings/jquery.d.ts" />
 var SxComments = (function () {
-    function SxComments(comments, postUrl, target) {
+    function SxComments(comments, postUrl, target, beforeSend) {
         this._comments = $(comments);
         this._form = this._comments.find(".sx-new-comment");
         this._postUrl = postUrl;
         this._target = $(target);
+        this._beforeSend = beforeSend;
     }
     SxComments.prototype.initialize = function () {
         var _this = this;
@@ -36,6 +37,10 @@ var SxComments = (function () {
                 method: "post",
                 url: _this._postUrl,
                 data: form.serialize(),
+                beforeSend: function () {
+                    if (_this._beforeSend)
+                        _this._beforeSend(form);
+                },
                 success: function (data, status, xhr) {
                     _this._target.html(data);
                 }

@@ -1,23 +1,19 @@
 ﻿@using SX.WebCore;
-
 @model simlex.ViewModels.VMProject
 @{
     var mode = ViewData["Mode"]?.ToString();
 }
-
 <div class="material @mode" itemscope itemtype="http://schema.org/Article">
     <meta itemprop="datePublished" content="@Model.DateOfPublication.ToString("o")" />
     <meta itemprop="dateModified" content="@Model.DateUpdate.ToString("o")" />
     <meta itemprop="headline" content="@(Model.SeoTags?.H1 ?? Model.Title)" />
     <meta itemprop="mainEntityOfPage" content="@(Url.ContentAbsUrl(Request.RawUrl))" />
-
     <span itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
         <meta itemprop="name" content="@MvcApplication.DefaultSiteName" />
         <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
             <meta itemprop="url" content="@Url.ContentAbsUrl(Url.Action("GetFavIcon", "SiteSettings"))" />
         </span>
     </span>
-
     @if (mode == "small")
     {
         <h2 class="material__title" itemprop="name">
@@ -28,7 +24,6 @@
     {
         <h1 class="material__title">@(Model.SeoTags?.H1 ?? Model.Title)</h1>
     }
-
     <div class="material__delimiter">
         <span class="material__delimiter-line"></span>
         <span class="fa fa-file-text-o"></span>
@@ -42,16 +37,13 @@
         {
             <a href="#comments-block" aria-hidden="true"><i class="fa fa-comment-o"></i> Комментариев: <span>@Model.CommentsCount</span></a>
         }
-        &nbsp;<i class="fa fa-eye"></i> Просмотров: <span>@Model.ViewsCount</span>
     </div>
-
     @if (mode != "small")
     {
         <div class="material__fwd">
             @Model.Foreword
         </div>
     }
-
     @if (Model.FrontPictureId.HasValue)
     {
         <div class="material__img" itemscope itemtype="http://schema.org/ImageObject" itemprop="image">
@@ -85,10 +77,19 @@
 
         <div class="share">
             @Html.SxShareButtons(settings: new SxExtantions.SxShareSettings()
-       {
-           ItemTemplate = x => $"<li title=\"{x.Net.Name}\" class=\"sxshare\" data-net-code=\"{x.Net.Code}\" data-show-counter=\"{x.ShowCounter.ToString().ToLower()}\" data-url=\"{Url.ContentAbsUrl(Model.GetUrl(Url))}\" data-image=\"{Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))}\" data-title=\"{Model.Title}\" data-desc=\"{Model.GetForewordFromHtml(300)}\"><a href=\"#\" style=\"background-color:{x.Net.Color}\"><i class=\"{x.Net.LogoCssClass}\"></i></a><span class=\"sxshare__counter\"></span></li>"
-       })
+{
+    ItemTemplate = x => $"<li title=\"{x.Net.Name}\" class=\"sxshare\" data-net-code=\"{x.Net.Code}\" data-show-counter=\"{x.ShowCounter.ToString().ToLower()}\" data-url=\"{Url.ContentAbsUrl(Model.GetUrl(Url))}\" data-image=\"{Url.ContentAbsUrl(Url.Action("Picture", "Pictures", new { id = Model.FrontPictureId }))}\" data-title=\"{Model.Title}\" data-desc=\"{Model.GetForewordFromHtml(300)}\"><a href=\"#\" style=\"background-color:{x.Net.Color}\"><i class=\"{x.Net.LogoCssClass}\"></i></a><span class=\"sxshare__counter\"></span></li>"
+})
         </div>
+
+        if (Model.Pictures.Any())
+        {
+            <div class="project__pages">
+                <h3 class="project__pages-header">Скриншоты страниц</h3>
+                @Html.Partial("_Pages", Model.Pictures)
+            </div>
+        }
+
     }
     @if (mode == "small")
     {

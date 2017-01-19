@@ -20,7 +20,7 @@ namespace simlex.Controllers
             viewModel = new VMNetAccordion();
             var nets = SX.WebCore.MvcApplication.SxMvcApplication.SiteNetsProvider.All;
             viewModel.Nets = nets.Select(Mapper.Map<SxSiteNet, SxVMSiteNet>).ToArray();
-            if (viewModel.Nets.Any())
+            if (viewModel.Nets.Any() && !Request.IsLocal)
             {
                 SxVMSiteNet item;
                 for (int i = 0; i < viewModel.Nets.Length; i++)

@@ -5,6 +5,7 @@ using simlex.Infrastructure.Repositories;
 using simlex.Controllers.Abstract;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using SX.WebCore.MvcControllers;
 
 namespace simlex.Controllers
 {
@@ -30,13 +31,15 @@ namespace simlex.Controllers
             var viewModel = await Repo.GetByTitleUrlAsync(year, month, day, titleUrl);
             if (viewModel == null) return new HttpNotFoundResult();
             viewModel.RelatedMaterials = await Repo.GetRelatedAsync<VMMaterial>(new SX.WebCore.SxFilter(1, 5) {
-                MaterialId=viewModel.Id
+                MaterialId=viewModel.Id,
+                ModelCoreType=viewModel.ModelCoreType
             });
-            viewModel.Comments = await CommentsController.Repo.ReadAsync(new SX.WebCore.SxFilter(1, 10)
+            viewModel.Comments = await SxCommentsController.Repo.ReadAsync(new SX.WebCore.SxFilter(1, 10)
             {
                 MaterialId=viewModel.Id,
                 ModelCoreType=viewModel.ModelCoreType
             });
+
             return View(model: viewModel);
         }
 

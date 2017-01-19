@@ -33,6 +33,7 @@
     <link href="@Url.Action("Css", "StaticContent", new { name = "bootstrap" })" rel="stylesheet" />
     <link href="@Url.Action("Css", "StaticContent", new { name = "font-awesome" })" rel="stylesheet" />
     <link href="~/content/dist/css/site.min.css" rel="stylesheet" />
+    @RenderSection("styles", false)
 </head>
 <body>
     <div class="page-wrapper">

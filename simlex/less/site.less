@@ -1132,3 +1132,57 @@ ul {
 .breadcrumb li {
     margin-bottom:@def-pad;
 }
+
+//project
+.project__pages{
+    margin-bottom:@def-pad;
+}
+
+.project__pages-header{
+    font-weight: 700;
+    font-family: 'Roboto Slab',serif;
+    margin-bottom:@def-pad;
+}
+
+.project__pages > ul{
+    padding:0;
+    margin:0;
+    font-size:0;
+    margin-right: -@def-pad;
+}
+
+.project-page{
+    width:33.3333%;
+    display:inline-block;
+    padding-bottom:33.3333%;
+    position:relative;
+
+    @media (max-width: @screen-xs-max) {
+        width:50%;
+        padding-bottom:50%;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    }
+
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    }
+
+    @media (min-width: @screen-lg-min) {
+    }
+}
+
+.project-page__link{
+    top:0;
+    right:@def-pad;
+    bottom:@def-pad;
+    left:0;
+    position:absolute;
+    background-position:center center;
+    background-size:cover;
+    .transition;
+}
+
+.project-page__link:hover{
+    opacity:.5;
+}

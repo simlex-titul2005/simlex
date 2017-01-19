@@ -1,7 +1,7 @@
 ﻿@model SX.WebCore.ViewModels.SxVMComment
 
 <div class="sx-new-comment">
-    <h4 class="mat-comments__header">Оставить комментарий</h4>
+    <h4 class="mat-comments__header">Оставить комментарий <i class="fa fa-spinner fa-spin pull-right" aria-hidden="false" style="display:none;"></i></h4>
     <form method="post" action="@Url.Action("Edit", "Comments")" class="mat-comments__new-form" autocomplete="off">
         @Html.AntiForgeryToken()
         @Html.HiddenFor(x => x.MaterialId)

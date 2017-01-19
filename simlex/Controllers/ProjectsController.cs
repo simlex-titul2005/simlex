@@ -3,6 +3,7 @@ using simlex.Infrastructure.Repositories;
 using simlex.Models;
 using simlex.ViewModels;
 using SX.WebCore.MvcApplication;
+using SX.WebCore.MvcControllers;
 using SX.WebCore.SxRepositories;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -21,19 +22,22 @@ namespace simlex.Controllers
         }
         public ProjectsController() : base(SxMvcApplication.ModelCoreTypeProvider[nameof(Project)]) { }
 
+#if !DEBUG
+        [OutputCache(Duration = 3600, VaryByParam = "titleUrl")]
+#endif
         [HttpGet]
         public async Task<ActionResult> Details(string titleUrl)
         {
             var viewModel = await Repo.GetByTitleUrlAsync(null, null, null, titleUrl);
             if (viewModel == null) return new HttpNotFoundResult();
 
-            return View(viewModel);
-        }
+            viewModel.Comments = await SxCommentsController.Repo.ReadAsync(new SX.WebCore.SxFilter(1, 10)
+            {
+                MaterialId = viewModel.Id,
+                ModelCoreType = viewModel.ModelCoreType
+            });
 
-        public override async Task<ActionResult> List(int page = 1, int pageSize = 10, bool? withPictures = null)
-        {
-            withPictures = true;
-            return await base.List(page, pageSize, withPictures);
+            return View(model: viewModel);
         }
     }
 }
