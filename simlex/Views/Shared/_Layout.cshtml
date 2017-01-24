@@ -55,6 +55,7 @@
                 @RenderBody()
             </div>
             <div class="page-col-3">
+                @Html.Partial("_AdsBlock")
                 @Html.Action("Statistic", "Articles")
                 @Html.Action("Accordion", "SiteNets")
                 <div class="banner-right">
