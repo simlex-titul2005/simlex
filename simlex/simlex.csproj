@@ -237,6 +237,7 @@
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\_Pages.cshtml" />
     <Content Include="Views\Shared\_AdsBlock.cshtml" />
+    <Content Include="Views\Shared\_Informer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

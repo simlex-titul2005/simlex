@@ -62,6 +62,10 @@
                 <div class="banner-right">
                     <img src="/content/dist/i/temp/addsens.jpg" style="max-width:100%;" />
                 </div>
+                @if (!isLocal)
+                {
+                    @Html.Partial("_Informer")
+                }
             </div>
         </div>
     </div>
