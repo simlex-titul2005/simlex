@@ -22,9 +22,6 @@ namespace simlex.Controllers
             }
         }
 
-#if !DEBUG
-        [OutputCache(Duration = 3600)]
-#endif
         [HttpGet]
         public async Task<ActionResult> Details(int year, string month, string day, string titleUrl)
         {
@@ -52,7 +49,7 @@ namespace simlex.Controllers
             {
                 Materials = Repo.Read(new SX.WebCore.SxFilter(1, 10)),
                 CommentedMaterials = Repo.LastCommented<VMMaterial>(new SX.WebCore.SxFilter(1, 10) { ModelCoreType=1 }),
-                Tags = MaterialTagsController.Repo.GetCloud(new SX.WebCore.SxFilter(1, 10))
+                Tags = SxMaterialTagsController.Repo.GetCloud(new SX.WebCore.SxFilter(1, 10))
             };
 
             return PartialView("_Statistic", viewModel);
