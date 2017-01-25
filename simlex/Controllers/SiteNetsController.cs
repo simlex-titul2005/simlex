@@ -29,7 +29,7 @@ namespace simlex.Controllers
                     switch (item.Net.Code)
                     {
                         case "vk":
-                            var list = getVkUsers(1, 12);
+                            var list = getVkUsers();
                             viewModel.Items.Add(item.Net.Code, list);
                             break;
                     }
@@ -40,7 +40,7 @@ namespace simlex.Controllers
             return PartialView("_Accordion", viewModel);
         }
 
-        private static SX.VkApi.Models.User[] getVkUsers(int group_id, int count = 10)
+        private static SX.VkApi.Models.User[] getVkUsers()
         {
             var access_token = SxApiParametersController.Repo.GetApiParameter("VK", "access_token");
             var groupId = SxApiParametersController.Repo.GetApiParameter("VK", "group_id");
@@ -48,7 +48,7 @@ namespace simlex.Controllers
             var request = new SX.VkApi.Request(access_token.Value);
             var response = request.Users.Search(new SX.VkApi.Parameters.Users.ParametersSearch()
             {
-                Count = count,
+                Count = 12,
                 GroupId= string.IsNullOrEmpty(groupId?.Value) ? (int?)null : Convert.ToInt32(groupId.Value),
                 Fields = new SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields[] {
                     SX.VkApi.Parameters.Users.ParametersSearch.UserSearchFields.has_photo,
