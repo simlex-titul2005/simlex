@@ -161,6 +161,7 @@
     <Compile Include="Areas\Admin\Controllers\RedirectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SeoKeywordsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeoTagsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShareButtonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteNetsController.cs" />

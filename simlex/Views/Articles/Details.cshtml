@@ -1,9 +1,9 @@
 ﻿@model simlex.ViewModels.VMArticle
 @{
-    ViewBag.Title = ViewBag.Title ?? Model.Title;
-    ViewBag.Description = ViewBag.Description ?? Model.Foreword;
-    ViewBag.Keywords = ViewBag.Keywords ?? "simlex.online, статьи";
-    ViewBag.PageImage = ViewBag.PageImage ?? Model.FrontPictureId;
+    ViewBag.Title = Model.SeoTags?.SeoTitle ?? Model.Title;
+    ViewBag.Description = Model.SeoTags?.SeoDescription ?? Model.Foreword;
+    ViewBag.Keywords = Model.SeoTags?.KeywordsString ?? "simlex.online, статьи";
+    ViewBag.PageImage = Model.SeoTags?.PageImageId ?? Model.FrontPictureId;
 }
 @section meta{
     <meta property="og:type" content="article" />
