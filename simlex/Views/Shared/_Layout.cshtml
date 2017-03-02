@@ -10,6 +10,10 @@
 <head lang="@lang">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (!isLocal)
+    {
+        <meta name="google-site-verification" content="y_YyidDiRKd9oLQJKoIjEjLzPl64Lz-eKTniutaiq3Q" />
+    }
     <meta property="og:url" content="@Url.ContentAbsUrl(Request.RawUrl)" />
     @if (title != null)
     {
